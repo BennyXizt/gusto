@@ -2,12 +2,22 @@
 @use "sass:math";
 
 :root {
+  --theme-background-color: #{map.get($COLORS, background_inverse)};
+  --theme-text-color: #{map.get($COLORS, inverse)};
+
   line-height: map.get($BASE, line_height);
   font-size: map.get($BASE, font_size);
   font-family: map.get($BASE, font_family);
   font-weight: map.get($BASE, font_weight);
-  color: map.get($BASE, main_color);
-  background-color: map.get($BASE, background_color);
+  color: var(--theme-text-color);
+  background-color: var(--theme-background-color);
+
+  &[data-theme='dark'] {
+    --theme-background-color: #{map.get($COLORS, background_default)};
+    --theme-text-color: #{map.get($COLORS, default)};
+  }
+
+  
 }
 
 textarea,
@@ -68,7 +78,7 @@ body {
     @if map.get($SETTINGS, responsive_type) == 1 {
       @include rem((
         padding: 0 math.div($padding_x, 2),
-        max-width: (map.get($BASE, max_width) + $padding_x)
+        max-width: map.get($BASE, max_width)
       ));
     }
     @else if map.get($SETTINGS, responsive_type) == 2 {

@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 %addCounter {
     counter-increment: item;
     
@@ -47,4 +49,43 @@
             opacity: 1;
         }
     }
+}
+
+// headers
+%h1 {
+    font-family: map.get($FONTS, goudy);
+    line-height: 1.1;
+    @include fluid(font-size, 48px 40px);
+}
+%h2 {
+    font-family: map.get($FONTS, goudy);
+    line-height: 1.2;
+    @include fluid(font-size, 40px 32px);
+}
+%h3 {
+    font-family: map.get($FONTS, goudy);
+    line-height: 1.2;
+    @include fluid(font-size, 32px 24px);
+}
+%h4 {
+    font-family: map.get($FONTS, goudy);
+    line-height: 1.2;
+    @include fluid(font-size, 24px 20px);
+}
+%h5 {
+    font-family: map.get($FONTS, goudy);
+    line-height: 1.2;
+    @include fluid(font-size, 20px 16px);
+}
+%h6 {
+    font-family: map.get($FONTS, goudy);
+    line-height: 1.4;
+    letter-spacing: .5px;
+    @include fluid(font-size, 16px 12px);
+}
+
+// Texts
+%textNavbar {
+    line-height: 1.2;
+    @include fluid(font-size, 14px 12px);
 }

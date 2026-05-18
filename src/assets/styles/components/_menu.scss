@@ -1,0 +1,13 @@
+.menu {
+    flex: unset;
+
+    &__item {
+       @extend %textNavbar;
+    }
+
+    @include media(tablet) {
+        &__list {
+            @include fluid(column-gap, 20px 10px);
+        }
+    }
+}

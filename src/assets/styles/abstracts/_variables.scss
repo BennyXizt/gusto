@@ -22,10 +22,10 @@ $BASE: (
     font_size: 16px,
     font_weight: 400,
     line_height: 1,
-    // font_family: ('Chillax', sans-serif),
-    main_color: rgb(0, 0, 0),
-    // background_color: #ffffff,
-    container_padding_x: (15px * 2),
+    font_family: ('Figtree', sans-serif),
+    main_color: #0F110C,
+    background_color: #FFFCF3,
+    container_padding_x: (12px * 2),
     min_width: 320px,
     max_width: 1920px
 );
@@ -43,7 +43,21 @@ $BURGER: (
 );
 
 $COLORS: (
-    base: map.get($BASE, main_color)
+    default: #FFFCF4,
+    muted: #FFFCF4,
+    inverse: #0F110C,
+    inverse_muted: #0E1011,
+    yellow: #F9CF39,
+    background_default: #0F110C,
+    background_muted: #161813,
+    background_muted_2: #1B1D18,
+    background_inverse: #FFFCF3,
+    background_inverse_muted: #F4F0E5,
+    background_inverse_muted_2: #F1ECDE,
+    border_default: #E8E8E8,
+    border_inverse: #FFFFFF,
+    icon_default: #0E1011,
+    icon_inverse: #FFFFFF
 );
 
 $ANIMATIONSPEEDS: (
@@ -56,4 +70,8 @@ $ZINDEXES: (
     immortal: 5
 );
 // Custom
-$FONTS: ();
+$FONTS: (
+    figtree: map.get($BASE, font_family),
+    goudy: ('SortsMillGoudy', sans-serif)
+);
+

@@ -1,0 +1,40 @@
+@use 'sass:map';
+
+.toggle {
+    width: pxToRem(30px);
+    height: pxToRem(20px);
+    background-color: map.get($COLORS, background_muted);
+    border-radius: pxToRem(10px);
+    cursor: pointer;
+    position: relative;
+    transition: 
+        background-color calc(map.get($ANIMATIONSPEEDS, base) / 2) calc(map.get($ANIMATIONSPEEDS, base) / 2) ease-in-out;
+
+    &__circle {
+        width: pxToRem(8px);
+        height: pxToRem(8px);
+        background-color: map.get($COLORS, default);
+        border-radius: 100%;
+
+        position: absolute;
+        top: 50%;
+        left: pxToRem(6px);
+        transform: translate(0, -50%);
+        transition: 
+            left map.get($ANIMATIONSPEEDS, base) ease-in-out,
+            background-color calc(map.get($ANIMATIONSPEEDS, base) / 2) calc(map.get($ANIMATIONSPEEDS, base) / 2) ease-in-out;
+    }
+
+   @media (hover: hover) and (pointer: fine) {
+    &:hover {
+        background-color: map.get($COLORS, background_inverse_muted);
+
+        .toggle {
+            &__circle {
+                left: calc(100% - 8px - 6px);
+                background-color: map.get($COLORS, inverse);
+            }
+        }
+    }
+   }
+}
