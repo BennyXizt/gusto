@@ -1,11 +1,25 @@
-import { convertToMOV } from "./externe/plugins/convertVideo/utils/utils"
+import { convertVideo } from "./externe/plugins/convertMedia"
+import { ConvertVideo } from "./externe/plugins/convertMedia/types/plugin.interface"
 
 
-export const settings = {
+type Settings = {
+    watcherNeeded: boolean
+    SVGConvertType: number
+    videoConverter: {
+        outputFormat: string
+        convertVideoFunction: ({ inputFile, outputFile }: ConvertVideo) => void
+    }
+    excludedSVG: string[]
+}
+
+export const settings: Settings = {
     watcherNeeded: true,
     SVGConvertType: 0,
     videoConverter: {
-        outputFormat: '.mov',
-        convertVideoFunction: convertToMOV
-    }
+        outputFormat: convertVideo.toMP4scale480.extention,
+        convertVideoFunction: convertVideo.toMP4scale480.function
+    },
+    excludedSVG: [
+        
+    ]
 }

@@ -1,0 +1,22 @@
+@use 'sass:map';
+
+.burgerText {
+    background-color: transparent;
+    @extend %themeToggleColor;
+    @extend %textNavbar;
+
+    span.disabled {
+        display: none;
+    }
+
+    &.active {
+        span {
+            &.disabled {
+                display: inline;
+            }
+            &.active {
+                display: none;
+            }
+        }
+    }
+}

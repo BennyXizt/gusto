@@ -1,16 +1,113 @@
 @use 'sass:map';
 
 .header {
-    position: relative;
+   position: relative;
+   display: none;
 
-    &__body {
-       display: flex;
-       flex-flow: row wrap;
-       justify-content: space-between;
-       align-items: center;
-    }
+   &__logo {
+      flex-shrink: 0;
+      @include rem((
+         width: 48px,
+         height: 18px
+      ));
+      @extend %themeToggleColor;
+   }
 
-    &__left {
-        background-color: map.get($COLORS, background_inverse);
-    }
+   &__toggle {
+      flex-shrink: 0;
+   }
+
+   &__left, &__right {
+      position: fixed;
+      @include fluid(top, 12px 6px);
+      z-index: map.get($ZINDEXES, immortal);
+   }
+
+   &__left {
+      max-width: 80dvw;
+      @extend %themeToggle;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      padding-top: 5px;
+      border-radius: 0 0 pxToRem(20px) 0;
+      @include fluid((
+         column-gap: 30px 5px,
+         row-gap: 30px 5px,
+         padding-left: 20px 10px,
+         padding-right: 20px 10px,
+         padding-bottom: 20px 10px
+      ));
+
+      &:before, &:after {
+         content: '';
+         mask: url('media/image/edge.svg');
+         position: absolute;
+         @extend %themeToggleBackground;
+
+         @include rem((
+            width: 20px,
+            height: 20px
+         ));
+      }
+
+      &:before {
+         top: 100%;
+         left: 0;
+      }
+
+      &:after {
+         top: 0;
+         left: 100%;
+      }
+   }
+   &__right {
+      @extend %themeToggle;
+      @include rem(right, 12px);
+      padding-top: 5px;
+      border-radius: 0 0 0 pxToRem(20px);
+
+      @include fluid((
+         column-gap: 30px 20px,
+         padding-left: 20px 10px,
+         padding-right: 20px 10px,
+         padding-bottom: 20px 10px
+      ));
+
+      &:before, &:after {
+         content: '';
+         mask: url('media/image/edge.svg');
+         position: absolute;
+         transform: rotate(90deg);
+         @extend %themeToggleBackground;
+
+         @include rem((
+            width: 20px,
+            height: 20px
+         ));
+      }
+
+      &:before {
+         top: 0;
+         right: 100%;
+      }
+
+      &:after {
+         top: 100%;
+         right: 0;
+      }
+   }
+   &__burgerText {
+      @extend %textNavbar;
+      @extend %themeToggleColor;
+      background-color: transparent;
+      cursor: pointer;
+   }
+
+
+   @include media(tablet) {
+      &__right {
+         display: none;
+      }
+   }
 }

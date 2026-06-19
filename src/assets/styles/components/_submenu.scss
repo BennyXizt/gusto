@@ -1,0 +1,127 @@
+@use 'sass:map';
+
+.submenu-menu {
+    position: relative;
+
+    &__icon {
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    &__trigger {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        @include fluid(column-gap, 15px 5px);
+    }
+
+    &__list {
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        color: var(--theme-text-color);
+        transition: map.get($ANIMATIONSPEEDS, base) ease-in-out;    
+        transition-property: background-color, transform, opacity, visibility;
+
+        &--first {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            overflow: hidden;
+            transform: translateY(-10px);
+            background-color: var(--theme-background-color);
+            padding: 2px;
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 100%;
+                @include fluid((
+                    top: -20px -10px,
+                    height: 20px 10px,
+                ));
+                
+            }
+        }
+        &:not(&--first) {
+            position: relative;
+            padding-left: pxToRem(18px);
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: pxToRem(9px);
+                top: 0;
+                width: 2px;
+                height: 100%;
+                background-color: var(--theme-toggle-current-background-color);
+            }
+        }
+    }
+
+    &__item {
+        overflow: hidden;
+    }
+    &__link {
+        display: flex;
+        @include rem(padding, 10px);
+    }
+
+    @include media(tablet, max) {
+        padding: 5px;
+        @include rem(padding-right, 15px);
+
+        &__list {
+            width: 100%;
+            
+            &--first {
+                right: unset;
+                left: 0;
+            }
+        }
+    }
+
+    &.active {
+        > .submenu-menu {
+            &__list {
+                overflow: unset;
+                height: max-content;
+                opacity: 1;
+                visibility: visible;
+
+                &--first {
+                    transform: translateY(10px);
+                }
+            }
+            &__trigger {
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    @media (hover:hover) and (pointer: fine) {
+        &:hover {
+            > .submenu-menu {
+                &__list {
+                    overflow: unset;
+                    height: max-content;
+                    opacity: 1;
+                    visibility: visible;
+
+                    &--first {
+                        transform: translateY(10px);
+                    }
+                }
+                &__trigger {
+                    svg {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+}

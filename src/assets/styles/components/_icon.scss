@@ -1,0 +1,10 @@
+@use 'sass:map';
+
+.icon {
+    @include rem((
+        width: 18px,
+        height: 18px
+    ));
+
+    transition: transform map.get($ANIMATIONSPEEDS, base) ease-in-out;
+}

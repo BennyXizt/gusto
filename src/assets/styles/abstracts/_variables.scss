@@ -1,9 +1,9 @@
 @use "sass:map";
 @use "sass:color";
 
+@import './default/variables';
+
 $SETTINGS: (    
-    // Mobile first
-    mobile_first: false,
     // pixels perfect
     pixels_only: true,
     // Тип адаптива контейнера

@@ -1,42 +1,15 @@
-import '~/test.scss'
-import '@/assets/styles/main.scss'
 // @ts-ignore
-import { BurgerMenu } from '~/components'
+import '@/assets/styles/main.scss'
 // @ts-ignore
 import { autoloader } from '~/scripts/autoloader/autoloader'
 import { ClickedModule } from './types/plugin.type'
 import { IntersectionObserverElements } from './types/plugin.interface'
 
-type themeToggle = 'dark' | 'light'
+// window.addEventListener('pointerdown', function(event) {
+//     const target = event.target
 
-window.addEventListener('pointerdown', function(event) {
-    const target = event.target
-
-    if (!(target instanceof Element)) return
-
-    const 
-        burger: HTMLElement | null = (target as HTMLElement).closest('.burger'),
-        themeToggle: HTMLElement | null = (target as HTMLElement).closest('.toggle')
-
-    if(burger)
-        BurgerMenu(burger)
-
-    if(themeToggle) {
-        const 
-            root = document.querySelector('html'),
-            currAttr: themeToggle = root!.getAttribute('data-theme') === 'dark' ? 'dark' : 'light',
-            mapAttr = {
-                'dark': 'light',
-                'light': 'dark'
-            }
-
-        if(currAttr) {
-            root!.setAttribute('data-theme', mapAttr[currAttr])
-            
-        }
-        else root!.setAttribute('data-theme', 'dark')
-    }
-})
+//     if (!(target instanceof Element)) return
+// })
 
 document.fonts.ready.then(async() => {
     const loadedModules = new Map<string, any>()

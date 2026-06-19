@@ -1,5 +1,4 @@
 @import 
-        './abstracts/default',
         './abstracts/variables',
         './abstracts/mixins',
         './abstracts/functions',
@@ -13,17 +12,22 @@
 
 // internal layout START
 @import
-	'./layout/header';
+	'./layout/header',
+	'./layout/slider',
+	'./layout/hero';
 // internal layout END
 
 @import 
-        '../../../externe/components/Burger/Burger',
-        '../../../externe/components/HeaderMenu/HeaderMenu';
+        '../../../externe/components/Burger/Burger';
 
 // internal components START
 @import
 	'./components/menu',
-	'./components/toggle';
+	'./components/submenu',
+	'./components/toggle',
+	'./components/icon',
+	'./components/slider',
+	'./components/burgerText';
 // internal components END
 
 // @import

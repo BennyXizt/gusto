@@ -16,7 +16,10 @@
                 // activePage: ''
             }
         })%>
-        <main class="layout"></main>
+        <main class="layout">
+			<%- include('src/ejs/layout/slider.ejs')%>
+			<%- include('src/ejs/layout/hero.ejs')%>
+		</main>
         <%- include('src/ejs/layout/footer.ejs') %>
     </div>
     <script type="module" src="/src/ts/main.ts"></script>

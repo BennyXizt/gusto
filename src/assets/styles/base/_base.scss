@@ -5,6 +5,12 @@
   --theme-background-color: #{map.get($COLORS, background_inverse)};
   --theme-text-color: #{map.get($COLORS, inverse)};
 
+  --theme-toggle-current-background-color: #{map.get($COLORS, background_inverse_muted)};
+  --theme-toggle-current-alternate-background-color: #{map.get($COLORS, background_inverse_muted_2)};
+  --theme-toggle-next-background-color: #{map.get($COLORS, background_muted)};
+  --theme-toggle-current-color: var(--theme-text-color);
+  --theme-toggle-next-color: #{map.get($COLORS, default)};
+
   line-height: map.get($BASE, line_height);
   font-size: map.get($BASE, font_size);
   font-family: map.get($BASE, font_family);
@@ -12,9 +18,18 @@
   color: var(--theme-text-color);
   background-color: var(--theme-background-color);
 
+  transition:
+    map.get($ANIMATIONSPEEDS, short) ease-in-out;
+  transition-property: background-color, color;
+
   &[data-theme='dark'] {
     --theme-background-color: #{map.get($COLORS, background_default)};
     --theme-text-color: #{map.get($COLORS, default)};
+
+    --theme-toggle-current-background-color: #{map.get($COLORS, background_muted)};
+    --theme-toggle-current-alternate-background-color: #{map.get($COLORS, background_muted_2)};
+    --theme-toggle-next-background-color: #{map.get($COLORS, background_inverse_muted)};
+    --theme-toggle-next-color: #{map.get($COLORS, background_muted)};
   }
 
   
@@ -53,6 +68,8 @@ body {
 }
 
 .wrapper {
+  @include fluid(padding, (12px 6px) 0px);
+  
   min-height: 100%;
   overflow: clip;
   position: relative;

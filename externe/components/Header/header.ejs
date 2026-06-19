@@ -1,64 +1,42 @@
 <header class="header">
     <div class="header__container container">
-        <div class="header__body">
-            <div class="header__left">
-                <% if(typeof header_component.homePage !== 'undefined') { %>
-                    <%if(header_component.homePage === true) { %>
-                        <%- include('externe/components/Image/Image.ejs', {
-                            image_component: {
-                                this: {
-                                    parent: 'header'
-                                },
-                                img: {
-                                    src: '/media/image/logo.svg',
-                                    alt: 'website-logo'
-                                }
-                            }
-                        })%>
-                    <% } else { %>
-                        <a href="./" class="header__link-logo">
-                        <%- include('externe/components/Image/Image.ejs', {
-                                image_component: {
-                                    this: {
-                                        parent: 'header'
-                                    },
-                                    img: {
-                                        src: '/media/icons/logo/logo.svg',
-                                        alt: 'website-logo'
-                                    }
-                                }
-                            })%>
-                        </a>
-                    <% } %>
-                <% } %>
-                <%- include('externe/components/HeaderMenu/HeaderMenu.ejs', {
-                    header_menu_component: {
-                        list: [
-                            {'href': '#', 'anchor': 'Menu'},
-                            {'href': '#', 'anchor': 'Reservation'},
-                            {'href': '#', 'anchor': 'About'},
-                            {'href': '#', 'anchor': 'Restaurant'}
-                        ],
-                        activePage: header_component.activePage ?? ''
-                    }
-                }) %>
-                <%- include('src/ejs/components/toggle.ejs', {
-                    toggle_component: {
+        <div class="header__left">
+            <%- include('externe/components/Logo/Logo.ejs', {
+                    logo_component: {
                         this: {
                             parent: 'header'
-                        }
+                        },
+                        homePage: header_component.homePage,
+                        type: 'icon'
                     }
-                })%>
-            </div>
-            <div class="header__right">
-                <%- include('externe/components/Burger/Burger.ejs', {
-                    burger_component: {
-                        this: {
-                            parent: 'header'
-                        }
+            })%>
+            <%- include('externe/components/HeaderMenu/HeaderMenu.ejs', {
+                header_menu_component: {
+                    list: [
+                        {'href': '#', 'anchor': 'Menu'},
+                        {'href': '#', 'anchor': 'Reservation'},
+                        {'href': '#', 'anchor': 'About'},
+                        {'href': '#', 'anchor': 'Restaurant'}
+                    ],
+                    activePage: header_component.activePage ?? ''
+                }
+            }) %>
+            <%- include('src/ejs/components/toggle.ejs', {
+                toggle_component: {
+                    this: {
+                        parent: 'header'
                     }
-                })%>
-            </div>
+                }
+            })%>
+        </div>
+        <div class="header__right">
+            <%- include('src/ejs/components/burgerText.ejs', {
+                burgerText_component: {
+                    this: {
+                        parent: 'header'
+                    }
+                }
+            })%>
         </div>
     </div>
 </header>

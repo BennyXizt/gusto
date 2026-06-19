@@ -1,0 +1,71 @@
+<%
+	blockClass = 'slider'
+
+	var defaultSliderElements = {
+		this: {
+			parent: 'slider'
+		}
+	}
+
+	var sliderElements = ['sld1', 'sld2', 'sld3', 'sld4', 'sld5'].map(e =>
+		{
+			return {
+				...defaultSliderElements,
+				img: {
+					src: `media/image/slider/${e}-lg.jpg`,
+					alt: e,
+					width: 1484,
+					height: 1056,
+					loading: 'lazy',
+					srcset: [
+						`media/image/slider/${e}-sm.jpg 480w`,
+						`media/image/slider/${e}-md.jpg 800w`,
+						`media/image/slider/${e}-lg.jpg 1200w`,
+						`media/image/slider/${e}-xl.jpg 1600w`,
+						`media/image/slider/${e}-2xl.jpg 2400w`
+					]
+				},
+				images: [
+					{  
+						type: 'image/avif', 
+						srcset: [
+							`media/image/slider/${e}-sm.avif 480w`,
+							`media/image/slider/${e}-md.avif 800w`,
+							`media/image/slider/${e}-lg.avif 1200w`,
+							`media/image/slider/${e}-xl.avif 1600w`,
+							`media/image/slider/${e}-2xl.avif 2400w`
+						]
+					},
+					{  
+						type: 'image/webp', 
+						srcset: [
+							`media/image/slider/${e}-sm.webp 480w`,
+							`media/image/slider/${e}-md.webp 800w`,
+							`media/image/slider/${e}-lg.webp 1200w`,
+							`media/image/slider/${e}-xl.webp 1600w`,
+							`media/image/slider/${e}-2xl.webp 2400w`
+						]
+					},
+				]
+			}
+		}
+	)
+	
+%>
+
+<section class='layout__<%=blockClass%> <%=blockClass%>'>
+	<div class='<%=blockClass%>__container container'>
+		Slider
+		<%- include('src/ejs/components/slider.ejs', {
+			slider_component: {
+				this: {
+					dataAttribute: [
+						'data-fsc-carousel-interval = 3000',
+						'data-fsc-carousel-direction = right',
+					]
+				},
+				list: sliderElements
+			}
+		}) %>
+	</div>
+</section>

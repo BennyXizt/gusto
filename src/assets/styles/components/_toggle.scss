@@ -3,7 +3,7 @@
 .toggle {
     width: pxToRem(30px);
     height: pxToRem(20px);
-    background-color: map.get($COLORS, background_muted);
+    background-color: var(--theme-toggle-current-background-color);
     border-radius: pxToRem(10px);
     cursor: pointer;
     position: relative;
@@ -13,7 +13,7 @@
     &__circle {
         width: pxToRem(8px);
         height: pxToRem(8px);
-        background-color: map.get($COLORS, default);
+        background-color: var(--theme-toggle-current-color);
         border-radius: 100%;
 
         position: absolute;
@@ -27,12 +27,12 @@
 
    @media (hover: hover) and (pointer: fine) {
     &:hover {
-        background-color: map.get($COLORS, background_inverse_muted);
+        background-color: var(--theme-toggle-next-background-color);
 
         .toggle {
             &__circle {
                 left: calc(100% - 8px - 6px);
-                background-color: map.get($COLORS, inverse);
+                background-color: var(--theme-toggle-next-color);
             }
         }
     }
