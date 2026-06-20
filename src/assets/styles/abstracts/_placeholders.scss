@@ -6,12 +6,12 @@
 %h1 {
     font-family: map.get($FONTS, goudy);
     line-height: 1.1;
-    @include fluid(font-size, 48px 40px);
+    @include fluid(font-size, 48px 32px);
 }
 %h2 {
     font-family: map.get($FONTS, goudy);
     line-height: 1.2;
-    @include fluid(font-size, 40px 32px);
+    @include fluid(font-size, 40px 28px);
 }
 %h3 {
     font-family: map.get($FONTS, goudy);
@@ -21,22 +21,34 @@
 %h4 {
     font-family: map.get($FONTS, goudy);
     line-height: 1.2;
-    @include fluid(font-size, 24px 20px);
+    @include fluid(font-size, 24px 18px);
 }
 %h5 {
     font-family: map.get($FONTS, goudy);
     line-height: 1.2;
-    @include fluid(font-size, 20px 16px);
+    @include fluid(font-size, 20px 18px);
 }
 %h6 {
     font-family: map.get($FONTS, goudy);
     line-height: 1.4;
     letter-spacing: .5px;
-    @include fluid(font-size, 16px 12px);
+    @include fluid(font-size, 16px 14px);
 }
 
 // Texts
+%textMedium {
+    @include fluid(font-size, 16px 14px);
+}
+%textSmall {
+    @include fluid(font-size, 14px 12px);
+}
+%textMeta {
+    line-height: 1;
+}
 %textNavbar {
     line-height: 1.2;
-    @include rem(font-size, 14px);
+    @include fluid(font-size, 14px 12px);
+}
+%textButton {
+    @include fluid(font-size, 14px 12px);
 }

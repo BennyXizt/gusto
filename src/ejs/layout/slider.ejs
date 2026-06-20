@@ -55,15 +55,8 @@
 
 <section class='layout__<%=blockClass%> <%=blockClass%>'>
 	<div class='<%=blockClass%>__container container'>
-		Slider
 		<%- include('src/ejs/components/slider.ejs', {
 			slider_component: {
-				this: {
-					dataAttribute: [
-						'data-fsc-carousel-interval = 3000',
-						'data-fsc-carousel-direction = right',
-					]
-				},
 				list: sliderElements
 			}
 		}) %>

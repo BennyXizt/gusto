@@ -7,6 +7,7 @@
 
   --theme-toggle-current-background-color: #{map.get($COLORS, background_inverse_muted)};
   --theme-toggle-current-alternate-background-color: #{map.get($COLORS, background_inverse_muted_2)};
+  --theme-toggle-current-button-background-color: #{map.get($COLORS, background_muted)};
   --theme-toggle-next-background-color: #{map.get($COLORS, background_muted)};
   --theme-toggle-current-color: var(--theme-text-color);
   --theme-toggle-next-color: #{map.get($COLORS, default)};
@@ -28,6 +29,7 @@
 
     --theme-toggle-current-background-color: #{map.get($COLORS, background_muted)};
     --theme-toggle-current-alternate-background-color: #{map.get($COLORS, background_muted_2)};
+    --theme-toggle-current-button-background-color: #{map.get($COLORS, background_inverse_muted)};
     --theme-toggle-next-background-color: #{map.get($COLORS, background_inverse_muted)};
     --theme-toggle-next-color: #{map.get($COLORS, background_muted)};
   }

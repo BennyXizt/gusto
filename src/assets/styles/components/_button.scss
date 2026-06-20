@@ -1,0 +1,60 @@
+@use 'sass:map';
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+
+    @extend %textButton;
+    background-color: var(--theme-toggle-current-color);
+    color: var(--theme-toggle-current-background-color);
+    border-radius: 6px;
+
+    @include fluid(padding, (12px 10px) (14px 10px));
+
+    &--alternative {
+        background-color: var(--theme-toggle-current-button-background-color);
+    }
+
+    &--transparent {
+        background-color: unset;
+        color: var(--theme-toggle-current-color);
+    }
+
+    &--text {
+        color: var(--theme-toggle-current-color);
+        padding: unset;
+        background-color: unset;
+        border-radius: unset;
+        padding-bottom: 2px;
+        border-bottom: 1px solid var(--theme-toggle-current-color);
+    }
+
+    &--fw {
+        width: 100%;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: var(--theme-toggle-next-color);
+            color: var(--theme-toggle-next-background-color);
+
+            &.button {
+                &--alternative {
+                    background-color: var(--theme-toggle-next-button-background-color);
+                }
+                &--transparent {
+                    background-color: unset;
+                    color: var(--theme-toggle-next-color);
+                }
+                &--text {
+                    background-color: unset;
+                    color: var(--theme-toggle-next-color);
+                    border-bottom-color: var(--theme-toggle-next-color);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/button.ejs', { 
+//	button_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof button_component === 'undefined' || !button_component) {
+		return
+	}
+
+	button_component.this = {
+		...button_component.this,
+		tag: button_component.link ? 'a' : button_component.this && button_component.this.tag ? button_component.this.tag : 'button'
+	}
+	
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...button_component.this, componentName: 'button'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...button_component.wrapper, componentName: 'button'})
+
+	var isWrapper = typeof button_component.wrapper === 'object' && button_component.wrapper
+
+	var buttonStyles = ['alternative', 'transparent']
+	var buttonTextStyles = ['alternative']
+	var buttonTypes = {
+		'text': 'button-text'
+	}
+	var isButtonText = false
+
+	if(typeof button_component.type !== 'undefined' && button_component.type) {
+		if(buttonTypes[button_component.type]) {
+			thisClass += ` button--${button_component.type}`
+			isButtonText = true
+		}
+	}
+
+	if(typeof button_component.style !== 'undefined' && button_component.style) {
+		if(!isButtonText && buttonStyles.includes(button_component.style)) {
+			thisClass += ` button--${button_component.style}`
+		}
+		else if(isButtonText && buttonTextStyles.includes(button_component.style)) {
+			thisClass += ` button--text-${button_component.style}`
+		}
+	}
+%>
+
+<% if(isWrapper) { %>
+	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+<% } %>
+<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<% if(typeof button_component.label !== 'undefined' && button_component.label) { %>
+		<%= button_component.label %>
+	<% } %>
+</<%=thisTag%>>
+<% if(isWrapper) { %>
+	</<%=wrapperThisTag%>>
+<% } %>

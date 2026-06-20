@@ -15,9 +15,6 @@ $SETTINGS: (
 $CONTAINER: $DEFAULT_CONTAINER;
 $HEADERS_CLAMP_WIDTH: $DEFAULT_HEADERS_CLAMP_WIDTH;
 
-$P: $DEFAULT_P;
-$HEADERS: $DEFAULT_HEADERS;
-
 $BASE: (
     font_size: 16px,
     font_weight: 400,
@@ -75,3 +72,57 @@ $FONTS: (
     goudy: ('SortsMillGoudy', sans-serif)
 );
 
+$HEADERS: (
+    h1: (
+        font_size_original: 48px,
+        font_size_adaptive: 32px,
+        line_height: 1.1,
+        font_family: map.get($FONTS, goudy),
+        font_style: italic,
+    ),
+    h2: (
+        font_size_original: 40px,
+        font_size_adaptive: 28px,
+        line_height: 1.2,
+        font_family: map.get($FONTS, goudy),
+        font_style: italic,
+    ),
+    h3: (
+        font_size_original: 32px,
+        font_size_adaptive: 24px,
+        line_height: 1.2,
+        font_family: map.get($FONTS, goudy),
+        font_style: italic,
+   ),
+   h4: (
+        font_size_original: 24px,
+        font_size_adaptive: 18px,
+        line_height: 1.2,
+        font_family: map.get($FONTS, goudy),
+        font_style: italic,
+   ),
+   h5: (
+        font_size_original: 20px,
+        font_size_adaptive: 18px,
+        line_height: 1.2,
+        font_family: map.get($FONTS, goudy),
+        font_style: italic,
+   ),
+   h6: (
+        font_size_original: 16px,
+        font_size_adaptive: 14px,
+        line_height: 1.4,
+        font_family: map.get($FONTS, goudy),
+        font_style: italic,
+        letter_spacing: .5px,
+   ),
+);
+
+$P: (
+    font_size_original: 15px,
+    font_size_adaptive: 13px,
+    line_height: 1.6,
+    // font_weight: 700,
+    // font_family: sans-serif,
+    // font_style: regular,
+);

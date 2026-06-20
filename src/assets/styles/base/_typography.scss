@@ -6,3 +6,15 @@
 }
 
 @include text_adaptive(p, $P);
+
+.text {
+    &--md {
+        @extend %textMedium;
+    }
+    &--sm {
+        @extend %textSmall;
+    }
+    &--mt {
+        @extend %textMeta;
+    }
+}
