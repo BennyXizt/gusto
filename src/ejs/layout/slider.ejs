@@ -1,52 +1,124 @@
 <%
 	blockClass = 'slider'
 
-	var defaultSliderElements = {
-		this: {
-			parent: 'slider'
-		}
-	}
-
-	var sliderElements = ['sld1', 'sld2', 'sld3', 'sld4', 'sld5'].map(e =>
+	var sliderContents = [
+		{
+			header: {
+				tag: 'h1',
+				label: '“The Best Pasta Outside of Italy”'
+			},
+			text: {
+				label: [
+					'“I’m Italian, and let me tell you, this pasta tastes like home. The sauces are rich, the pasta is cooked to perfection, and the ambiance is fantastic. Highly recommend this place!',
+				]
+			}
+		},
+		{
+			header: {
+				tag: 'h1',
+				label: '“Authentic slice of Italy in Prague!”'
+			},
+			text: {
+				label: [
+					`“The pasta is freshly made, the sauces are bursting with flavor, and the desserts are divine. The owners' passion for Italian cuisine truly shines through. Highly recommend for anyone craving real Italian food!"`
+				]
+			}
+		},
+		{
+			header: {
+				tag: 'h1',
+				label: `From Tuscany to the Heart of Prague`
+			},
+			text: {
+				label: [
+					`Moving from Tuscany to the heart of Prague wasn’t just about opening a restaurant—it was about creating a place where Italians and locals alike could gather around the table and experience Italy’s culinary magic.`
+				]
+			}
+		},
+		{
+			header: {
+				tag: 'h1',
+				label: `“A must-visit for Italian food lovers in Prague.”`
+			},
+			text: {
+				label: [
+					`“This restaurant is a gem! From the moment we walked in, the ambiance was warm and welcoming. The lasagna was the best I've ever had, and the tiramisu was perfection. A must-visit for Italian food lovers in Prague."`
+				]
+			}
+		},
+		{
+			header: {
+				tag: 'h1',
+				label: `“The most Authentic Italian experience”`
+			},
+			text: {
+				label: [
+					`"Absolutely phenomenal! The carbonara was cooked to perfection, and the wine pairing was spot on. It’s clear the owners pour their hearts into every dish. A delightful spot for a romantic evening or a casual lunch."`
+				]
+			}
+		},
+	]
+	var sliderElements = ['sld1', 'sld2', 'sld3', 'sld4', 'sld5'].map((e, i) =>
 		{
 			return {
-				...defaultSliderElements,
-				img: {
-					src: `media/image/slider/${e}-lg.jpg`,
-					alt: e,
-					width: 1484,
-					height: 1056,
-					loading: 'lazy',
-					srcset: [
-						`media/image/slider/${e}-sm.jpg 480w`,
-						`media/image/slider/${e}-md.jpg 800w`,
-						`media/image/slider/${e}-lg.jpg 1200w`,
-						`media/image/slider/${e}-xl.jpg 1600w`,
-						`media/image/slider/${e}-2xl.jpg 2400w`
+				content: sliderContents[i],
+				image_component: {
+					this: {
+						class: `${blockClass}__background`,
+						dataAttribute: `draggable=false`
+					},
+					img: {
+						src: `media/image/slider/${e}-lg.jpg`,
+						alt: e,
+						width: 1484,
+						height: 1056,
+						loading: 'lazy',
+						srcset: [
+							`media/image/slider/${e}-sm.jpg 480w`,
+							`media/image/slider/${e}-md.jpg 800w`,
+							`media/image/slider/${e}-lg.jpg 1200w`,
+							`media/image/slider/${e}-xl.jpg 1600w`,
+							`media/image/slider/${e}-2xl.jpg 2400w`
+						]
+					},
+					images: [
+						{  
+							type: 'image/avif', 
+							srcset: [
+								`media/image/slider/${e}-sm.avif 480w`,
+								`media/image/slider/${e}-md.avif 800w`,
+								`media/image/slider/${e}-lg.avif 1200w`,
+								`media/image/slider/${e}-xl.avif 1600w`,
+								`media/image/slider/${e}-2xl.avif 2400w`
+							]
+						},
+						{  
+							type: 'image/webp', 
+							srcset: [
+								`media/image/slider/${e}-sm.webp 480w`,
+								`media/image/slider/${e}-md.webp 800w`,
+								`media/image/slider/${e}-lg.webp 1200w`,
+								`media/image/slider/${e}-xl.webp 1600w`,
+								`media/image/slider/${e}-2xl.webp 2400w`
+							]
+						},
 					]
 				},
-				images: [
-					{  
-						type: 'image/avif', 
-						srcset: [
-							`media/image/slider/${e}-sm.avif 480w`,
-							`media/image/slider/${e}-md.avif 800w`,
-							`media/image/slider/${e}-lg.avif 1200w`,
-							`media/image/slider/${e}-xl.avif 1600w`,
-							`media/image/slider/${e}-2xl.avif 2400w`
-						]
-					},
-					{  
-						type: 'image/webp', 
-						srcset: [
-							`media/image/slider/${e}-sm.webp 480w`,
-							`media/image/slider/${e}-md.webp 800w`,
-							`media/image/slider/${e}-lg.webp 1200w`,
-							`media/image/slider/${e}-xl.webp 1600w`,
-							`media/image/slider/${e}-2xl.webp 2400w`
-						]
-					},
-				]
+				testimonial: {
+					users: Array.from({ length: 3 }, (_, i) => {
+						return {
+							img: {
+								src: `media/image/users/user-${i + 1}.jpg`,
+								alt: `user-${i + 1}`
+							}
+						}
+					}),
+					rating: '3,8',
+					reviews: {
+						stars: 5,
+						total: '1,280'
+					}
+				}
 			}
 		}
 	)

@@ -1,0 +1,28 @@
+@use 'sass:map';
+
+.stars {
+    position: relative;
+
+    &__front,
+    &__back {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        @include rem(gap, 2px);
+    }
+
+    &__front {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: calc(3.8 * 100% / 5);
+        transition: width map.get($ANIMATIONSPEEDS, base) ease-in-out;
+       
+        svg {
+            color: map.get($COLORS, yellow);
+        }
+    }
+
+   
+}

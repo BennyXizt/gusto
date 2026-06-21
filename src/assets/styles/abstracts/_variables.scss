@@ -41,9 +41,9 @@ $BURGER: (
 
 $COLORS: (
     default: #FFFCF4,
-    muted: #FFFCF4,
+    muted: rgba(255, 252, 244, 0.6),
     inverse: #0F110C,
-    inverse_muted: #0E1011,
+    inverse_muted: rgba(14, 16, 17, 0.6),
     yellow: #F9CF39,
     background_default: #0F110C,
     background_muted: #161813,
@@ -64,7 +64,8 @@ $ANIMATIONSPEEDS: (
 );
 
 $ZINDEXES: (
-    immortal: 5
+    immortal: 5,
+    base: 1
 );
 // Custom
 $FONTS: (

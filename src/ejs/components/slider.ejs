@@ -32,32 +32,124 @@
 %>
 
 
-<<%=thisTag%> data-fsc-carousel <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+<<%=thisTag%> data-fsc-carousel data-fsc-carousel-interval='15000000' <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<div class="<%=blockClass%>__counter">
+		<p class="text text--mt" data-fsc-carousel-counter></p>
+		<p class="text text--mt" data-fsc-carousel-timer></p>
+	</div>
+	
 	<ul class="<%=blockClass%>__list" data-fsc-carousel-list>
-		<% for (var image_component of slider_component.list) { %>
+		<% for (var slider of slider_component.list) { %>
 			<li class="<%=blockClass%>__element" data-fsc-carousel-item>
-				
 				<%- include('externe/components/Image/Image.ejs', {
-					image_component: image_component
+					image_component: slider.image_component
 				}) %>
-			
+
+				<% if(slider.content) { 
+					content = slider.content
+				%>
+					<div class="<%=blockClass%>__wrapper">
+						<div class="<%=blockClass%>__content">
+							<% if(content.header) { %>
+								<<%=content.header.tag%>>
+									<%=content.header.label%>
+								</<%=content.header.tag%>>
+							<% } %>
+							<% if(content.text) { %>
+								<% for (var text of content.text.label) { %>
+									<p>
+										<%=text%>
+									</p>
+								<% }  %>
+							<% } %>
+						</div>
+
+						<% if(slider.testimonial) { 
+							testimonial = slider.testimonial	
+							subBlockClass = 'testimonial-slider'
+						%>
+							<div class="<%=blockClass%>__testimonial <%=subBlockClass%>">
+								<% if(testimonial.users) { %>
+									<div class="<%=subBlockClass%>__users">
+										<% for(const image_component of testimonial.users) { %>
+											<a class="<%=subBlockClass%>__user" href="#">
+												<%- include('externe/components/Image/Image.ejs', {
+													image_component: image_component
+												}) %>
+											</a>
+										<% } %>
+									</div>
+								<% } %>
+
+								<span class="<%=subBlockClass%>__rating">
+									<%=testimonial.rating%>
+								</span>
+
+								<div class="<%=subBlockClass%>__score">
+									<%- include('src/ejs/components/stars.ejs', {
+										stars_component: {
+											this: {
+												class: `${subBlockClass}__stars`
+											},
+											stars: 5,
+											icon_component: {
+												wrapper: {
+													block: `stars__link`,
+													tag: 'a',
+													dataAttribute: [
+														'href=#'
+													]
+												},
+												this: {
+													class: `stars__icon`
+												},
+												name: 'ph_star'
+											}
+										}
+									}) %>
+									<span class="<%=subBlockClass%>__reviews"><%=`(${testimonial.reviews.total} Reviews)`%></span>
+								</div>
+							</div>
+						<% } %>
+					</div>
+				<% } %>
 			</li>
 		<% } %>
 	</ul>
 	
 	<div class="<%=blockClass%>__controls">
-		<button data-fsc-carousel-button-left>Left</button>
-		<button data-fsc-carousel-button-right>Right</button>
+		<button class="<%=blockClass%>__control" data-fsc-carousel-button-left>
+			<%- include('externe/components/Icon/Icon.ejs', {
+				icon_component: {
+					this: {
+						parent: blockClass
+					},
+					name: 'ph_arrow-left-light'
+				}
+			}) %>
+		</button>
+		<button class="<%=blockClass%>__control" data-fsc-carousel-button-right>
+			<%- include('externe/components/Icon/Icon.ejs', {
+				icon_component: {
+					this: {
+						parent: blockClass
+					},
+					name: 'ph_arrow-right-light'
+				}
+			}) %>
+		</button>
 	</div>
-	<ul class="<%=blockClass%>__dots" data-fsc-carousel-dots>
-		<% for (var i = 0; i < slider_component.list.length; i++) { %>
-			<li class="<%=blockClass%>__dot" data-fsc-carousel-dot>
-				<%= i + 1 %>
-			</li>
-		<% } %>
-	</ul>
-	<div class="<%=blockClass%>__counter">
-		<span data-fsc-carousel-timer></span>
-		<span data-fsc-carousel-counter></span>
+
+	<% subBlockClass = 'dots-slider' %> 
+	<div class="<%=blockClass%>__dots <%=subBlockClass%>">
+		<ul class="<%=subBlockClass%>__list" data-fsc-carousel-dots>
+			<% for (var i = 0; i < slider_component.list.length; i++) { %>
+				<li class="<%=subBlockClass%>__element" data-fsc-carousel-dot>
+					<button class="<%=subBlockClass%>__button">
+						<span class="<%=subBlockClass%>__dot"></span>
+					</button>
+				</li>
+			<% } %>
+		</ul>
 	</div>
 </<%=thisTag%>>

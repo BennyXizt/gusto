@@ -52,3 +52,12 @@
 %textButton {
     @include fluid(font-size, 14px 12px);
 }
+
+%card {
+    @extend %themeToggleBackground;
+
+    @include fluid((
+        padding: 48px 12px,
+        border-radius: 12px 8px
+    ));
+}

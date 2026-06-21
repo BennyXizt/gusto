@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"php -S localhost:8000 -t ./externe/php\"",
+    "dev": "concurrently \"vite\" \"npm run server\"",
     "server": "php -S localhost:8000 -t ./externe/php",
     "online": "vite --host",
     "build": "vite build",

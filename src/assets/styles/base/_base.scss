@@ -4,6 +4,7 @@
 :root {
   --theme-background-color: #{map.get($COLORS, background_inverse)};
   --theme-text-color: #{map.get($COLORS, inverse)};
+  --theme-text-color-alternative: #{map.get($COLORS, inverse_muted)};
 
   --theme-toggle-current-background-color: #{map.get($COLORS, background_inverse_muted)};
   --theme-toggle-current-alternate-background-color: #{map.get($COLORS, background_inverse_muted_2)};
@@ -26,6 +27,7 @@
   &[data-theme='dark'] {
     --theme-background-color: #{map.get($COLORS, background_default)};
     --theme-text-color: #{map.get($COLORS, default)};
+    --theme-text-color-alternative: #{map.get($COLORS, muted)};
 
     --theme-toggle-current-background-color: #{map.get($COLORS, background_muted)};
     --theme-toggle-current-alternate-background-color: #{map.get($COLORS, background_muted_2)};
@@ -117,4 +119,13 @@ body {
       }
     }
    
+}
+
+.layout {
+  display: flex;
+  flex-flow: row wrap;
+
+  &__slider {
+    flex: 1 1 pxAdaptive(950px);
+  }
 }
