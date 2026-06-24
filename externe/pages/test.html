@@ -87,6 +87,35 @@
             </div>
         </div>
 	</section>
+	<section class='page_component'>
+        <div class="outer container">
+            <div class="inner">
+                <h6 class="text-center">PAGE Component</h6>
+                <div class="flex items-center gap-x-2">
+                    <%- include('src/ejs/components/page.ejs', {
+                        page_component: {
+                            this: {
+                                class: 'class'
+                            },
+                            link: {
+                                href: '#',
+                                label: `label`
+                            },
+                            image_component: {
+                                this: {
+                                    class: 'page__image'
+                                },
+                                img: {
+                                    src: '/media/image/slider/sld1-md.jpg',
+                                    alt: 'alt'
+                                }
+                            }
+                        }
+                    })%>
+                </div>
+            </div>
+        </div>
+	</section>
 	<script type="module" src="../temporary/test.ts"></script>
     <script type="module" src="../../../src/ts/main.ts"></script>
 </body>

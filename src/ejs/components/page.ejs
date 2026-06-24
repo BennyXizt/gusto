@@ -1,0 +1,58 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/page.ejs', { 
+//	page_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof page_component === 'undefined' || !page_component) {
+		return
+	}
+
+	page_component.this = {
+		...page_component.this,
+		tag: page_component.this && page_component.this.tag ? page_component.this.tag : 'figure'
+	}
+
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...page_component.this, componentName: 'page'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...page_component.wrapper, componentName: 'page'})
+
+	var isWrapper = typeof page_component.wrapper === 'object' && page_component.wrapper
+%>
+
+<a <%-thisDataAttributes%>  href="<%=page_component.link.href%>" class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<% if(isWrapper) { %>
+		<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+	<% } %>
+	<figure class="<%=blockClass%>__figure">
+		<%- include('externe/components/Image/Image.ejs', {
+			image_component: page_component.image_component
+		}) %>
+		<figcaption class="<%=blockClass%>__caption">
+			<p><%=page_component.link.label%></p>
+		</figcaption>
+	</figure>
+	<% if(isWrapper) { %>
+		</<%=wrapperThisTag%>>
+	<% } %>
+</a>

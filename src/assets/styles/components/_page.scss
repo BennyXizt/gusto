@@ -1,0 +1,35 @@
+@use 'sass:map';
+
+.page {
+    overflow: hidden;
+    @include rem(border-radius, 12px);
+
+    &__figure {
+        position: relative;
+        aspect-ratio: 400 / 285.5;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__caption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @extend %corner;
+        border-radius: 0 0 20px 0;
+        background-color: var(--theme-background-color);
+        @include theme_toggle(background-color);
+        @include fluid(padding, 8px (16px 8px) (20px 16px));
+        
+        p {
+            @extend %textMeta;
+            color: var(--theme-text-color);
+            @include theme_toggle(color);
+        }
+    }
+}

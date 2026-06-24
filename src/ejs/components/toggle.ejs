@@ -1,7 +1,7 @@
 <%
 // Пример вызова в шаблоне (EJS):
 //
-// <\%- include('src/ejs/components/switcher.ejs', { 
+// <\%- include('src/ejs/components/toggle.ejs', { 
 //	toggle_component: {
 //		this: {
 //			parent: 'parentClass',
@@ -20,8 +20,9 @@
 		return
 	}
 
-	var {blockClass, thisClass, thisID, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...toggle_component, componentName: 'toggle'})
+	var {blockClass, thisClass, thisID, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...toggle_component.this, componentName: 'toggle'})
     thisTag = 'button'
+	
 %>
 
 <<%=thisTag%> data-fsc-themetoggle <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>

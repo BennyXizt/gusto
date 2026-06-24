@@ -1,9 +1,76 @@
 <%
 	blockClass = 'hero'
+
+	pages = [
+		{
+			this: {
+				class: 'class'
+			},
+			link: {
+				href: '#',
+				label: `Our Restaurant`
+			},
+			image_component: {
+				this: {
+					class: 'page__image'
+				},
+				img: {
+					src: '/media/image/slider/sld5-md.jpg',
+					alt: 'alt'
+				}
+			}
+		},
+		{
+			this: {
+				class: 'class'
+			},
+			link: {
+				href: '#',
+				label: `Menu`
+			},
+			image_component: {
+				this: {
+					class: 'page__image'
+				},
+				img: {
+					src: '/media/image/slider/sld2-md.jpg',
+					alt: 'alt'
+				}
+			}
+		},
+		{
+			this: {
+				class: 'class'
+			},
+			link: {
+				href: '#',
+				label: `Menu`
+			},
+			image_component: {
+				this: {
+					class: 'page__image'
+				},
+				img: {
+					src: '/media/image/slider/sld2-md.jpg',
+					alt: 'alt'
+				}
+			}
+		},
+	]
+	
+	page_includes = []
+
+	for (var page_component of pages) {
+		page_includes.push(include('src/ejs/components/page.ejs', {
+			page_component: page_component
+		}))
+	}
 %>
 
 <section class='layout__<%=blockClass%> <%=blockClass%>'>
 	<div class='<%=blockClass%>__container container'>
-		Hero
+		<%- include('src/ejs/layout/flex.ejs', {
+			content: page_includes
+		})%>
 	</div>
 </section>

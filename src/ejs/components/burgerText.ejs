@@ -20,11 +20,11 @@
 		return
 	}
 
-	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...burgerText_component, componentName: 'burgerText'})
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...burgerText_component.this, componentName: 'burgerText'})
 	thisTag = 'button'
 %>
 
-<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+<<%=thisTag%> data-fsc-texttrigger <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
 	<span class="active">Menu</span>
 	<span class="disabled">Close</span>
 </<%=thisTag%>>

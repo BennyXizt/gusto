@@ -63,7 +63,7 @@ body {
         background: rgba(0,0,0, .85);
         width: 100dvw;
         height: 100dvh;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         z-index: map.get($ZINDEXES, immortal);
@@ -89,7 +89,7 @@ body {
   }
 }
 
-.container {
+main {
     $padding_x: map.get($BASE, container_padding_x);
 
     width: 100%;
@@ -124,8 +124,19 @@ body {
 .layout {
   display: flex;
   flex-flow: row wrap;
+  gap: fluid(12px 6px) pxAdaptive(12px);
+
+  $slider_offset: 100px;
 
   &__slider {
-    flex: 1 1 pxAdaptive(950px);
+    $px: 1920px - 12px - 6px - 400px - $slider_offset;
+    $basis: math.floor($px * 100% / 1920px); // 418px
+    flex: 1 1 pxAdaptive($basis);
+  }
+
+  &__hero {
+    $px: 1920px - 12px - 6px - 1484px + $slider_offset;
+    $basis: math.floor($px * 100% / 1920px); // 1502px
+    flex: 1 1 pxAdaptive($basis);
   }
 }

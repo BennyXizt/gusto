@@ -61,3 +61,27 @@
         border-radius: 12px 8px
     ));
 }
+
+%corner {
+    &:before, &:after {
+        content: '';
+        mask: url('/media/image/edge.svg') no-repeat;
+        position: absolute;
+        @extend %themeToggleBackground;
+
+        @include rem((
+            width: 20px,
+            height: 20px
+        ));
+    }
+
+    &:before {
+        top: 100%;
+        left: 0;
+    }
+
+    &:after {
+        top: 0;
+        left: 100%;
+    }
+}

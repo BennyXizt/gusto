@@ -126,11 +126,9 @@
 %>
 
 <section class='layout__<%=blockClass%> <%=blockClass%>'>
-	<div class='<%=blockClass%>__container container'>
-		<%- include('src/ejs/components/slider.ejs', {
-			slider_component: {
-				list: sliderElements
-			}
-		}) %>
-	</div>
+	<%- include('src/ejs/components/slider.ejs', {
+		slider_component: {
+			list: sliderElements
+		}
+	}) %>
 </section>

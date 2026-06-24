@@ -37,6 +37,9 @@ export function carouselObserver(entry: IntersectionObserverEntry, _: Intersecti
 
     carousel.visible = entry.isIntersecting 
 
+    console.log(carousel.visible);
+    
+
     if (carousel.visible && !carousel.animationID) {
         animate(carousel)
     }

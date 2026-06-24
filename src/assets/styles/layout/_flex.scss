@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+.flex {
+    display: flex;
+    flex-flow: row wrap;
+    @include fluid(gap, 12px 6px);
+
+    & > * {
+        flex: 1 1 pxAdaptive(250px);
+    }
+}

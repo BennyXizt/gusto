@@ -16,62 +16,53 @@
       flex-shrink: 0;
    }
 
-   &__left, &__right {
+   &__container {
       position: fixed;
-      @include fluid(top, 12px 6px);
+      top: 0;
       z-index: map.get($ZINDEXES, immortal);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      padding: fluid(12px 6px) 12px 0;
+
+      &:before {
+         content: '';
+         width: 100%;
+         height: fluid(12px 6px);
+         background-color: red;
+         position: absolute;
+         top: 0;
+         left: 0;
+      }
+   }
+
+   &__left, &__right {
+      position: relative;
+
+      @include rem(padding-bottom, 20px);
+
+      @include fluid((
+         padding-left: 20px 10px,
+         padding-right: 20px 10px,
+      ));
    }
 
    &__left {
       max-width: 80dvw;
       @extend %themeToggle;
+      @extend %corner;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      padding-top: 5px;
       border-radius: 0 0 pxToRem(20px) 0;
-      @include fluid((
-         column-gap: 30px 5px,
-         row-gap: 30px 5px,
-         padding-left: 20px 10px,
-         padding-right: 20px 10px,
-         padding-bottom: 20px 10px
-      ));
 
-      &:before, &:after {
-         content: '';
-         mask: url('media/image/edge.svg');
-         position: absolute;
-         @extend %themeToggleBackground;
-
-         @include rem((
-            width: 20px,
-            height: 20px
-         ));
-      }
-
-      &:before {
-         top: 100%;
-         left: 0;
-      }
-
-      &:after {
-         top: 0;
-         left: 100%;
-      }
+      @include fluid(gap, 30px 5px);
    }
    &__right {
+      right: 0;
       @extend %themeToggle;
-      @include rem(right, 12px);
-      padding-top: 5px;
       border-radius: 0 0 0 pxToRem(20px);
-
-      @include fluid((
-         column-gap: 30px 20px,
-         padding-left: 20px 10px,
-         padding-right: 20px 10px,
-         padding-bottom: 20px 10px
-      ));
 
       &:before, &:after {
          content: '';

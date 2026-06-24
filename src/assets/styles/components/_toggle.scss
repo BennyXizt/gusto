@@ -4,25 +4,24 @@
     width: pxToRem(30px);
     height: pxToRem(20px);
     background-color: var(--theme-toggle-current-background-color);
+    @include theme_toggle(background-color);
     border-radius: pxToRem(10px);
     cursor: pointer;
     position: relative;
-    transition: 
-        background-color calc(map.get($ANIMATIONSPEEDS, base) / 2) calc(map.get($ANIMATIONSPEEDS, base) / 2) ease-in-out;
+    
 
     &__circle {
         width: pxToRem(8px);
         height: pxToRem(8px);
         background-color: var(--theme-toggle-current-color);
+        @include theme_toggle(background-color, left);
         border-radius: 100%;
 
         position: absolute;
         top: 50%;
         left: pxToRem(6px);
         transform: translate(0, -50%);
-        transition: 
-            left map.get($ANIMATIONSPEEDS, base) ease-in-out,
-            background-color calc(map.get($ANIMATIONSPEEDS, base) / 2) calc(map.get($ANIMATIONSPEEDS, base) / 2) ease-in-out;
+        
     }
 
    @media (hover: hover) and (pointer: fine) {

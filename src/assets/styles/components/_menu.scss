@@ -41,6 +41,7 @@
         &__body {
             overflow-y: auto;
             background-color: var(--theme-toggle-current-background-color);
+            @include theme_toggle(background-color);
             height: 100%;
             @include rem((
                 border-radius: 20px,
@@ -51,6 +52,7 @@
         &__item {
             background-color: var(--theme-toggle-current-alternate-background-color);
             color: var(--theme-toggle-current-color);
+            @include theme_toggle(background-color, color);
 
             @include rem(border-radius, 20px);
 

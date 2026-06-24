@@ -1,5 +1,8 @@
 @use 'sass:map';
 
 .hero {
-
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
 }
