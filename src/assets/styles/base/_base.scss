@@ -2,33 +2,14 @@
 @use "sass:math";
 
 :root {
-  --theme-primary-text-color: #{map.get($COLORS, inverse)};
-  --theme-primary-background-color: #{map.get($COLORS, background_inverse)};
-  
+  line-height:      map.get($BASE, line_height);
+  font-size:        map.get($BASE, font_size);
+  font-family:      map.get($BASE, font_family);
+  font-weight:      map.get($BASE, font_weight);
+  color:            getThemeTag(primary-text-color);
+  background-color: getThemeTag(primary-background-color);
 
-  --theme-secondary-background-color: #{map.get($COLORS, background_inverse_muted)};
-  --theme-secondary-text-color: #{map.get($COLORS, inverse_muted)};
-
-  line-height: map.get($BASE, line_height);
-  font-size: map.get($BASE, font_size);
-  font-family: map.get($BASE, font_family);
-  font-weight: map.get($BASE, font_weight);
-  color: var(--theme-primary-text-color);
-  background-color: var(--theme-primary-background-color);
-
-  transition:
-    map.get($ANIMATIONSPEEDS, short) ease-in-out;
-  transition-property: background-color, color;
-
-  &[data-theme='dark'] {
-    --theme-primary-text-color: #{map.get($COLORS, default)};
-    --theme-primary-background-color: #{map.get($COLORS, inverse)};
-
-    --theme-secondary-background-color: #{map.get($COLORS, background_muted)};
-    --theme-secondary-text-color: #{map.get($COLORS, muted)};
-  }
-
-  
+  @include initiateThemeVars;
 }
 
 textarea,
@@ -63,7 +44,7 @@ body {
   }
 }
 
-.wrapper {
+.root {
   @include fluid(padding, (12px 6px) 0px);
   
   min-height: 100%;

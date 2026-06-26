@@ -1,7 +1,7 @@
 <%
 // Пример вызова в шаблоне (EJS):
 //
-// <\%- include('src/ejs/components/stars.ejs', { 
+// <\%- include('externe/components/content/Stars/Stars.ejs', { 
 //	stars_component: {
 //		this: {
 //			parent: 'parentClass',
@@ -20,12 +20,18 @@
 //			tag: 'div',
 //			style: ['customStyle'],
 //			dataAttribute: ['customDataAttributes'], 
-//		}
+//		},
+//		stars: 5,
+//		icon_component: {},
 //	}
 //}) %>
 %>
 <%
-	if(typeof stars_component === 'undefined' || !stars_component || typeof stars_component.stars === 'undefined' || !stars_component.stars) {
+	if(
+		(typeof stars_component === 'undefined' || !stars_component) ||
+		(typeof stars_component.stars === 'undefined' || !stars_component.stars ) ||
+		(typeof stars_component.icon_component === 'undefined' && !stars_component.icon_component)
+	) {
 		return
 	}
 

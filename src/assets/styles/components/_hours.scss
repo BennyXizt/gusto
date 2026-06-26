@@ -15,7 +15,7 @@
         @extend %textMeta;
 
         text-align: left;
-        color: var(--theme-secondary-text-color);
+        color: getThemeTag(secondary-text-color);
 
         @include transition(color);
     }
@@ -43,7 +43,7 @@
             flex: 1;
             align-self: flex-end;
             min-height: 1px;
-            border-bottom: 1px dotted var(--theme-secondary-text-color);
+            border-bottom: 1px dotted getThemeTag(secondary-text-color);
             opacity: .1;
         }
     }

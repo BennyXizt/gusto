@@ -57,6 +57,22 @@ $COLORS: (
     icon_inverse: #FFFFFF
 );
 
+$THEMEPREFIX: '--';
+$THEME: (
+    default: (
+        primary-text-color: map.get($COLORS, inverse),
+        primary-background-color: map.get($COLORS, background_inverse),
+        secondary-text-color: map.get($COLORS, inverse_muted),
+        secondary-background-color: map.get($COLORS, background_inverse_muted),
+    ),
+    dark: (
+        primary-text-color: map.get($COLORS, default),
+        primary-background-color: map.get($COLORS, inverse),
+        secondary-text-color: map.get($COLORS, muted),
+        secondary-background-color: map.get($COLORS, background_muted),
+    ),
+);
+
 $ANIMATIONSPEEDS: (
     long: .5s,
     base: .4s,

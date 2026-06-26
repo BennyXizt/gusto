@@ -3,7 +3,7 @@
 .toggle {
     cursor: pointer;
     position: relative;
-    background-color: var(--theme-secondary-background-color);
+    background-color: getThemeTag(secondary-background-color);
     @include transition(background-color);
     
     @include rem((
@@ -15,7 +15,7 @@
 
     &__circle {
         border-radius: 100%;
-        background-color: var(--theme-primary-text-color);
+        background-color: getThemeTag(primary-text-color);
         @include transition(background-color, left);
 
         @include rem((
@@ -32,12 +32,12 @@
 
    @media (hover: hover) and (pointer: fine) {
     &:hover {
-        background-color: var(--theme-primary-text-color);
+        background-color: getThemeTag(primary-text-color);
 
         .toggle {
             &__circle {
                 left: calc(100% - 8px - 6px);
-                background-color: var(--theme-primary-background-color);
+                background-color: getThemeTag(primary-background-color);
             }
         }
     }

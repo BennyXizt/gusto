@@ -2,8 +2,8 @@
 @use 'sass:math';
 
 @mixin activeMenu {
-    background-color: var(--theme-toggle-next-background-color);
-    color: var(--theme-toggle-next-color);
+    background-color: getThemeTag(primary-background-color);
+    color: getThemeTag(secondary-text-color);
 }
 
 .menu {
@@ -42,7 +42,7 @@
         &__body {
             height: 100%;
             overflow-y: auto;
-            background-color: var(--theme-primary-background-color);
+            background-color: getThemeTag(primary-background-color);
             @include transition(background-color);
             
             @include rem((
@@ -52,9 +52,7 @@
         }
 
         &__item {
-           
-
-            background-color: var(--theme-secondary-background-color);
+            background-color: getThemeTag(secondary-background-color);
             @include transition(background-color);
 
             @include rem(border-radius, 20px);

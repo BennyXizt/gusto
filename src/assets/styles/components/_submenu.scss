@@ -20,7 +20,7 @@
         height: 0;
         opacity: 0;
         visibility: hidden;
-        color: var(--theme-text-color);
+        color: getThemeTag(primary-text-color);
         transition: map.get($ANIMATIONSPEEDS, base) ease-in-out;    
         transition-property: background-color, transform, opacity, visibility;
 
@@ -30,7 +30,7 @@
             top: 100%;
             overflow: hidden;
             transform: translateY(-10px);
-            background-color: var(--theme-background-color);
+            background-color: getThemeTag(primary-background-color);
             padding: 2px;
 
             &:before {
@@ -56,7 +56,7 @@
                 top: 0;
                 width: 2px;
                 height: 100%;
-                background-color: var(--theme-toggle-current-background-color);
+                background-color: getThemeTag(primary-background-color);
             }
         }
     }

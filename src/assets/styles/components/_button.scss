@@ -8,21 +8,21 @@
     align-items: center;
     cursor: pointer;
     text-align: center;
-    background-color: var(--theme-primary-text-color);
-    color: var(--theme-primary-background-color);
+    background-color: getThemeTag(primary-text-color);
+    color: getThemeTag(primary-background-color);
     border-radius: pxAdaptive(6px);
 
     @include transition(background-color, color);
     @include fluid(padding, (12px 10px) (14px 10px));
 
     &--alternative {
-        background-color: var(--theme-secondary-background-color);
-        color: var(--theme-primary-text-color);
+        background-color: getThemeTag(secondary-background-color);
+        color: getThemeTag(primary-text-color);
     }
 
     &--transparent {
         background-color: unset;
-        color: var(--theme-primary-text-color);
+        color: getThemeTag(primary-text-color);
     }
 
     &--big {
@@ -35,12 +35,12 @@
     }
 
     &--text {
-        color: var(--theme-primary-text-color);
+        color: getThemeTag(primary-text-color);
         padding: unset;
         background-color: unset;
         border-radius: unset;
         padding-bottom: 2px;
-        border-bottom: 1px solid var(--theme-primary-text-color);
+        border-bottom: 1px solid getThemeTag(primary-text-color);
     }
 
     &--fw {
