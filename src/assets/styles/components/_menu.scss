@@ -1,6 +1,11 @@
 @use 'sass:map';
 @use 'sass:math';
 
+@mixin activeMenu {
+    background-color: var(--theme-toggle-next-background-color);
+    color: var(--theme-toggle-next-color);
+}
+
 .menu {
     &__link {
        @extend %textNavbar;
@@ -11,10 +16,6 @@
         flex-flow: column wrap;
         justify-content: space-between;
         @include rem(row-gap, 10px);
-    }
-
-    &__body {
-        @extend %themeToggleTransition;
     }
 
     &__link {
@@ -39,10 +40,11 @@
         ));
 
         &__body {
-            overflow-y: auto;
-            background-color: var(--theme-toggle-current-background-color);
-            @include theme_toggle(background-color);
             height: 100%;
+            overflow-y: auto;
+            background-color: var(--theme-primary-background-color);
+            @include transition(background-color);
+            
             @include rem((
                 border-radius: 20px,
                 padding: 12px
@@ -50,22 +52,21 @@
         }
 
         &__item {
-            background-color: var(--theme-toggle-current-alternate-background-color);
-            color: var(--theme-toggle-current-color);
-            @include theme_toggle(background-color, color);
+           
+
+            background-color: var(--theme-secondary-background-color);
+            @include transition(background-color);
 
             @include rem(border-radius, 20px);
 
             @media (hover: hover) and (pointer: fine) {
                 &:hover {
-                    background-color: var(--theme-toggle-next-background-color);
-                    color: var(--theme-toggle-next-color);
+                    @include activeMenu;
                 }
             }
 
             &.active {
-                background-color: var(--theme-toggle-next-background-color);
-                color: var(--theme-toggle-next-color);
+                @include activeMenu;
             }
         }
 

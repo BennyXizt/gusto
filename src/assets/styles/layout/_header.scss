@@ -5,11 +5,11 @@
 
    &__logo {
       flex-shrink: 0;
+
       @include rem((
          width: 48px,
          height: 18px
       ));
-      @extend %themeToggleColor;
    }
 
    &__toggle {
@@ -40,8 +40,6 @@
    &__left, &__right {
       position: relative;
 
-      @include rem(padding-bottom, 20px);
-
       @include fluid((
          padding-left: 20px 10px,
          padding-right: 20px 10px,
@@ -49,47 +47,23 @@
    }
 
    &__left {
+      @extend %corner-1;
+
       max-width: 80dvw;
-      @extend %themeToggle;
-      @extend %corner;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      border-radius: 0 0 pxToRem(20px) 0;
-
+      
       @include fluid(gap, 30px 5px);
    }
    &__right {
+      @extend %corner-2;
+
       right: 0;
-      @extend %themeToggle;
-      border-radius: 0 0 0 pxToRem(20px);
-
-      &:before, &:after {
-         content: '';
-         mask: url('media/image/edge.svg');
-         position: absolute;
-         transform: rotate(90deg);
-         @extend %themeToggleBackground;
-
-         @include rem((
-            width: 20px,
-            height: 20px
-         ));
-      }
-
-      &:before {
-         top: 0;
-         right: 100%;
-      }
-
-      &:after {
-         top: 100%;
-         right: 0;
-      }
    }
    &__burgerText {
       @extend %textNavbar;
-      @extend %themeToggleColor;
+      
       background-color: transparent;
       cursor: pointer;
    }

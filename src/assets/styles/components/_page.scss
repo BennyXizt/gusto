@@ -7,6 +7,7 @@
     &__figure {
         position: relative;
         aspect-ratio: 400 / 285.5;
+        overflow: hidden;
     }
 
     &__image {
@@ -14,22 +15,34 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
+        @include transition(transform);
     }
 
     &__caption {
+        @extend %corner-1;
+
         position: absolute;
         top: 0;
         left: 0;
-        @extend %corner;
-        border-radius: 0 0 20px 0;
-        background-color: var(--theme-background-color);
-        @include theme_toggle(background-color);
-        @include fluid(padding, 8px (16px 8px) (20px 16px));
+
+        @include rem(padding-top, 8px);
+        @include fluid((
+            padding-left: 16px 8px,
+            padding-right: 16px 8px
+        ));
         
         p {
             @extend %textMeta;
-            color: var(--theme-text-color);
-            @include theme_toggle(color);
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .page {
+                &__image {
+                    transform: scale(1.1);
+                }
+            }
         }
     }
 }

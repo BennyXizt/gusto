@@ -1,0 +1,7 @@
+@use 'sass:map';
+
+.socials {
+    &__item {
+        flex: 1 1 pxAdaptive(158px);
+    }
+}

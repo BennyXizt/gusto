@@ -12,7 +12,8 @@
 			},
 			image_component: {
 				this: {
-					class: 'page__image'
+					class: 'page__image',
+					dataAttribute: 'draggable = false'
 				},
 				img: {
 					src: '/media/image/slider/sld5-md.jpg',
@@ -30,25 +31,8 @@
 			},
 			image_component: {
 				this: {
-					class: 'page__image'
-				},
-				img: {
-					src: '/media/image/slider/sld2-md.jpg',
-					alt: 'alt'
-				}
-			}
-		},
-		{
-			this: {
-				class: 'class'
-			},
-			link: {
-				href: '#',
-				label: `Menu`
-			},
-			image_component: {
-				this: {
-					class: 'page__image'
+					class: 'page__image',
+					dataAttribute: 'draggable = false'
 				},
 				img: {
 					src: '/media/image/slider/sld2-md.jpg',
@@ -65,6 +49,7 @@
 			page_component: page_component
 		}))
 	}
+	
 %>
 
 <section class='layout__<%=blockClass%> <%=blockClass%>'>
@@ -72,5 +57,26 @@
 		<%- include('src/ejs/layout/flex.ejs', {
 			content: page_includes
 		})%>
+
+		<%- include('src/ejs/components/button.ejs', {
+			button_component: {
+				link: '#',
+				label: 'Book a Table',
+				style: 'big',
+				priority: true,
+				icon_component: {
+					name: 'ph_arrow-right-light'
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/components/socials.ejs', {
+			social_component: {}
+		})%>
+
+		<%- include('src/ejs/components/hours.ejs', {
+			hours_component: {}
+		})%>
+		
 	</div>
 </section>

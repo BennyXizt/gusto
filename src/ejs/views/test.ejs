@@ -72,7 +72,7 @@
             </div>
         </div>
 	</section>
-    <section class='button_component'>
+    <section class='buttontext_component'>
         <div class="outer container">
             <div class="inner">
                 <h6 class="text-center">BUTTONTEXT Component</h6>
@@ -110,6 +110,32 @@
                                     alt: 'alt'
                                 }
                             }
+                        }
+                    })%>
+                </div>
+            </div>
+        </div>
+	</section>
+	<section class='socials_component'>
+        <div class="outer container">
+            <div class="inner">
+                <h6 class="text-center">SOCIAL Component</h6>
+                <div class="flex items-center gap-x-2">
+                    <%- include('src/ejs/components/socials.ejs', {
+                        social_component: {}
+                    })%>
+                </div>
+            </div>
+        </div>
+	</section>
+	<section class='hours_component'>
+        <div class="outer container">
+            <div class="inner">
+                <h6 class="text-center">HOURS Component</h6>
+                <div class="flex items-center gap-x-2">
+                    <%- include('src/ejs/components/hours.ejs', {
+                        hours_component: {
+                            
                         }
                     })%>
                 </div>

@@ -1,0 +1,86 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/hours.ejs', { 
+//	hours_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof hours_component === 'undefined' || !hours_component) {
+		return
+	}
+
+	hours_component.this = {
+		...hours_component.this,
+		tag: 'table'
+	}
+
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...hours_component.this, componentName: 'hours'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...hours_component.wrapper, componentName: 'hours'})
+
+	var isWrapper = typeof hours_component.wrapper === 'object' && hours_component.wrapper
+
+	var hours = [
+		{
+			day: 'Monday',
+			hour: `Closed`
+		},
+		{
+			day: 'Tuesday',
+			hour: `16:00 - 22:00`
+		},
+		{
+			day: 'Wednesday',
+			hour: `16:00 - 22:00`
+		},
+		{
+			day: 'Thursday',
+			hour: `16:00 - 22:00`
+		},
+		{
+			day: 'Friday',
+			hour: `17:00 - 22:00`
+		},
+		{
+			day: 'Sat - Sun',
+			hour: `17:00 - 22:00`
+		},
+	]
+%>
+
+<% if(isWrapper) { %>
+	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+<% } %>
+<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<caption class="<%=blockClass%>__caption">Opening Hours</caption>
+	<tbody class="<%=blockClass%>__list">
+		<% for(var hour of hours) { %>
+			<tr class="<%=blockClass%>__item">
+				<th class="<%=blockClass%>__day"><%=hour.day%></th>
+				<td class="<%=blockClass%>__hour"><%=hour.hour%></td>
+			</tr>
+		<% } %>
+	</tbody>
+</<%=thisTag%>>
+<% if(isWrapper) { %>
+	</<%=wrapperThisTag%>>
+<% } %>

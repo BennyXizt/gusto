@@ -1,0 +1,55 @@
+@use 'sass:map';
+
+.hours {
+    @extend %card;
+
+    display: flex;
+    flex-direction: column;
+
+    @include fluid((
+        padding: 40px 12px,
+        gap: 24px 12px
+    ));
+
+    &__caption {
+        @extend %textMeta;
+
+        text-align: left;
+        color: var(--theme-secondary-text-color);
+
+        @include transition(color);
+    }
+
+    &__list {
+        display: flex;
+        flex-flow: column nowrap;
+
+        @include rem(row-gap, 8px);
+    }
+
+    &__item {
+        @extend %textDefault;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        @include fluid(column-gap, 16px 8px);
+
+        &::before {
+            content: '';
+            display: block;
+            flex: 1;
+            align-self: flex-end;
+            min-height: 1px;
+            border-bottom: 1px dotted var(--theme-secondary-text-color);
+            opacity: .1;
+        }
+    }
+
+    &__day {
+        order: -1;
+    }
+
+}

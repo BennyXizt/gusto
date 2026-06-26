@@ -9,6 +9,10 @@
         flex-flow: row nowrap;
         justify-content: flex-start;
         @include rem(gap, 2px);
+
+        svg {
+            @include transition(color);
+        }
     }
 
     &__front {
@@ -21,6 +25,12 @@
        
         svg {
             color: map.get($COLORS, yellow);
+        }
+    }
+
+    &__back {
+        svg {
+            color: var(--theme-secondary-text-color);
         }
     }
 

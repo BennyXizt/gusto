@@ -2,38 +2,30 @@
 @use "sass:math";
 
 :root {
-  --theme-background-color: #{map.get($COLORS, background_inverse)};
-  --theme-text-color: #{map.get($COLORS, inverse)};
-  --theme-text-color-alternative: #{map.get($COLORS, inverse_muted)};
+  --theme-primary-text-color: #{map.get($COLORS, inverse)};
+  --theme-primary-background-color: #{map.get($COLORS, background_inverse)};
+  
 
-  --theme-toggle-current-background-color: #{map.get($COLORS, background_inverse_muted)};
-  --theme-toggle-current-alternate-background-color: #{map.get($COLORS, background_inverse_muted_2)};
-  --theme-toggle-current-button-background-color: #{map.get($COLORS, background_muted)};
-  --theme-toggle-next-background-color: #{map.get($COLORS, background_muted)};
-  --theme-toggle-current-color: var(--theme-text-color);
-  --theme-toggle-next-color: #{map.get($COLORS, default)};
+  --theme-secondary-background-color: #{map.get($COLORS, background_inverse_muted)};
+  --theme-secondary-text-color: #{map.get($COLORS, inverse_muted)};
 
   line-height: map.get($BASE, line_height);
   font-size: map.get($BASE, font_size);
   font-family: map.get($BASE, font_family);
   font-weight: map.get($BASE, font_weight);
-  color: var(--theme-text-color);
-  background-color: var(--theme-background-color);
+  color: var(--theme-primary-text-color);
+  background-color: var(--theme-primary-background-color);
 
   transition:
     map.get($ANIMATIONSPEEDS, short) ease-in-out;
   transition-property: background-color, color;
 
   &[data-theme='dark'] {
-    --theme-background-color: #{map.get($COLORS, background_default)};
-    --theme-text-color: #{map.get($COLORS, default)};
-    --theme-text-color-alternative: #{map.get($COLORS, muted)};
+    --theme-primary-text-color: #{map.get($COLORS, default)};
+    --theme-primary-background-color: #{map.get($COLORS, inverse)};
 
-    --theme-toggle-current-background-color: #{map.get($COLORS, background_muted)};
-    --theme-toggle-current-alternate-background-color: #{map.get($COLORS, background_muted_2)};
-    --theme-toggle-current-button-background-color: #{map.get($COLORS, background_inverse_muted)};
-    --theme-toggle-next-background-color: #{map.get($COLORS, background_inverse_muted)};
-    --theme-toggle-next-color: #{map.get($COLORS, background_muted)};
+    --theme-secondary-background-color: #{map.get($COLORS, background_muted)};
+    --theme-secondary-text-color: #{map.get($COLORS, muted)};
   }
 
   
@@ -124,19 +116,24 @@ main {
 .layout {
   display: flex;
   flex-flow: row wrap;
+  align-content: flex-start;
   gap: fluid(12px 6px) pxAdaptive(12px);
 
   $slider_offset: 100px;
 
   &__slider {
     $px: 1920px - 12px - 6px - 400px - $slider_offset;
-    $basis: math.floor($px * 100% / 1920px); // 418px
+    $basis: math.floor(math.div($px * 100%, 1920px)); // 418px
     flex: 1 1 pxAdaptive($basis);
+
+    overflow: hidden;
+
+    @include fluid(border-radius, 12px 8px);
   }
 
   &__hero {
     $px: 1920px - 12px - 6px - 1484px + $slider_offset;
-    $basis: math.floor($px * 100% / 1920px); // 1502px
+    $basis: math.floor(math.div($px * 100%, 1920px)); // 1502px
     flex: 1 1 pxAdaptive($basis);
   }
 }

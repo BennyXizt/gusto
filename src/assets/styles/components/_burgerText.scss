@@ -2,7 +2,7 @@
 
 .burgerText {
     background-color: transparent;
-    @extend %themeToggleColor;
+    color: inherit;
     @extend %textNavbar;
 
     span.disabled {

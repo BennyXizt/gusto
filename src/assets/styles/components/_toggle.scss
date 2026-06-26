@@ -1,37 +1,43 @@
 @use 'sass:map';
 
 .toggle {
-    width: pxToRem(30px);
-    height: pxToRem(20px);
-    background-color: var(--theme-toggle-current-background-color);
-    @include theme_toggle(background-color);
-    border-radius: pxToRem(10px);
     cursor: pointer;
     position: relative;
+    background-color: var(--theme-secondary-background-color);
+    @include transition(background-color);
+    
+    @include rem((
+        width: 30px,
+        height: 20px,
+        border-radius: 10px
+    ));
     
 
     &__circle {
-        width: pxToRem(8px);
-        height: pxToRem(8px);
-        background-color: var(--theme-toggle-current-color);
-        @include theme_toggle(background-color, left);
         border-radius: 100%;
+        background-color: var(--theme-primary-text-color);
+        @include transition(background-color, left);
 
+        @include rem((
+            width: 8px,
+            height: 8px,
+            left: 6px
+        ));
+        
         position: absolute;
         top: 50%;
-        left: pxToRem(6px);
         transform: translate(0, -50%);
         
     }
 
    @media (hover: hover) and (pointer: fine) {
     &:hover {
-        background-color: var(--theme-toggle-next-background-color);
+        background-color: var(--theme-primary-text-color);
 
         .toggle {
             &__circle {
                 left: calc(100% - 8px - 6px);
-                background-color: var(--theme-toggle-next-color);
+                background-color: var(--theme-primary-background-color);
             }
         }
     }

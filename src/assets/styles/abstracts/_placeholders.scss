@@ -36,6 +36,10 @@
 }
 
 // Texts
+%textDefault {
+    @include fluid(font-size, 15px 13px);
+    line-height: 1.6;
+}
 %textMedium {
     @include fluid(font-size, 16px 14px);
 }
@@ -43,6 +47,7 @@
     @include fluid(font-size, 14px 12px);
 }
 %textMeta {
+    @include fluid(font-size, 15px 13px);
     line-height: 1;
 }
 %textNavbar {
@@ -54,7 +59,8 @@
 }
 
 %card {
-    @extend %themeToggleBackground;
+    background-color: var(--theme-primary-background-color);
+    @include transition(background-color);
 
     @include fluid((
         padding: 48px 12px,
@@ -62,18 +68,29 @@
     ));
 }
 
-%corner {
+%cornerDefault {
+    background-color: var(--theme-primary-background-color);
+
+    @include transition(background-color);
+    
     &:before, &:after {
         content: '';
         mask: url('/media/image/edge.svg') no-repeat;
         position: absolute;
-        @extend %themeToggleBackground;
+        background-color: var(--theme-primary-background-color);
 
+        @include transition(background-color);
         @include rem((
             width: 20px,
             height: 20px
         ));
     }
+}
+%corner-1 {
+    @extend %cornerDefault;
+
+    @include rem(padding-bottom, 20px);
+    @include rem(border-radius, 0 0 20px 0);
 
     &:before {
         top: 100%;
@@ -83,5 +100,47 @@
     &:after {
         top: 0;
         left: 100%;
+    }
+}
+
+%corner-2 {
+    @extend %cornerDefault;
+
+    @include rem(padding-bottom, 20px);
+    @include rem(border-radius, 0 0 0 20px);
+
+    &:before, &:after {
+        transform: rotate(90deg);
+    }
+
+    &:before {
+        top: 0;
+        right: 100%;
+    }
+
+    &:after {
+        top: 100%;
+        right: 0;
+    }
+}
+
+%corner-3 {
+    @extend %cornerDefault;
+
+    @include rem(padding-top, 20px);
+    @include rem(border-radius, 20px 0 0 0);
+
+    &:before, &:after {
+        transform: rotate(180deg);
+    }
+
+    &:before {
+        bottom: 0%;
+        right: 100%;
+    }
+
+    &:after {
+        bottom: 100%;
+        right: 0;
     }
 }

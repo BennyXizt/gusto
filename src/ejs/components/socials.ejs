@@ -1,0 +1,129 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/social.ejs', { 
+//	social_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof social_component === 'undefined' || !social_component) {
+		return
+	}
+
+	social_component.this = {
+		...social_component.this,
+		tag: 'ul'
+	}
+
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...social_component.this, componentName: 'socials'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...social_component.wrapper, componentName: 'socials'})
+
+	var isWrapper = typeof social_component.wrapper === 'object' && social_component.wrapper
+
+	thisClass += ' flex'
+
+	var defaultButtonComponent = {
+		this: {
+			class: `${blockClass}__link button--fw`
+		},
+		style: 'alternative big',
+	}
+
+	var socials = [
+		{
+			button_component: {
+				...defaultButtonComponent,
+				link: '#',
+				label: 'Behance',
+				icon_component: {
+					name: 'ph_behance-logo-light'
+				}
+			}
+		},
+		{
+			button_component: {
+				...defaultButtonComponent,
+				link: '#',
+				label: 'Facebook',
+				icon_component: {
+					name: 'ph_facebook-logo-light'
+				}
+			}
+		},
+		{
+			button_component: {
+				...defaultButtonComponent,
+				link: '#',
+				label: 'Instagram',
+				icon_component: {
+					name: 'ph_instagram-logo-light'
+				}
+			}
+		},
+		{
+			button_component: {
+				...defaultButtonComponent,
+				link: '#',
+				label: 'LinkedIn',
+				icon_component: {
+					name: 'ph_linkedin-logo-light'
+				}
+			}
+		},
+		{
+			button_component: {
+				...defaultButtonComponent,
+				link: '#',
+				label: 'Pinterest',
+				icon_component: {
+					name: 'ph_pinterest-logo-light'
+				}
+			}
+		},
+		{
+			button_component: {
+				...defaultButtonComponent,
+				link: '#',
+				label: 'Twitter',
+				icon_component: {
+					name: 'ph_twitter-logo-light'
+				}
+			}
+		},
+	]
+%>
+
+<% if(isWrapper) { %>
+	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+<% } %>
+<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<% for(var social of socials) { %>
+		<li class="<%=blockClass%>__item">
+			<%- include('src/ejs/components/button.ejs', {
+				button_component: social.button_component
+			}) %>
+		</li>
+	<% } %>
+</<%=thisTag%>>
+<% if(isWrapper) { %>
+	</<%=wrapperThisTag%>>
+<% } %>
