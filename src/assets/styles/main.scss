@@ -1,40 +1,47 @@
-@import 
-        './abstracts/variables',
-        './abstracts/mixins',
-        './abstracts/functions',
-        './abstracts/placeholders';
+@import
+  './abstracts/variables',
+  './abstracts/mixins',
+  './abstracts/functions',
+  './abstracts/placeholders';
 
-@import 
-        './base/reset',
-        './base/fonts',
-        './base/typography',
-        './base/base';
+@import
+  './base/reset',
+  './base/fonts',
+  './base/typography',
+  './base/base';
 
 // internal layout START
 @import
-	'./layout/header',
-	'./layout/slider',
-	'./layout/hero',
-	'./layout/flex';
+  './layout/header',
+  './layout/footer',
+  './layout/slider',
+  './layout/hero',
+  './layout/flex';
 // internal layout END
 
-@import 
-        '../../../externe/components/Burger/Burger';
+@import
+  '../../../externe/components/Burger/Burger';
 
 // internal components START
 @import
-	'./components/menu',
-	'./components/submenu',
-	'./components/toggle',
-	'./components/icon',
-	'./components/slider',
-	'./components/burgerText',
-	'./components/button',
-	'./components/stars',
-	'./components/page',
-	'./components/socials',
-	'./components/hours';
+  './components/menu',
+  './components/submenu',
+  './components/toggle',
+  './components/icon',
+  './components/slider',
+  './components/burgerText',
+  './components/button',
+  './components/stars',
+  './components/page',
+  './components/socials',
+  './components/hours',
+  './components/headerText',
+  './components/menus',
+  './components/title',
+	'./components/menusItem';
 // internal components END
 
-// @import
-//         'pages'
+// internal pages START
+@import
+  './pages/menu';
+// internal pages END

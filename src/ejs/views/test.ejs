@@ -8,106 +8,214 @@
 </head>
 <body>
     <%- include('./externe/components/DummyAside/DummyAside.ejs') %>
-    <section class="heading">
-        <div class="outer container">
-            <div class="inner">
-                <h4 class="text-center">Heading</h4>
-                <h1>Heading 1</h1>
-                <h2>Heading 2</h2>
-                <h3>Heading 3</h3>
-                <h4>Heading 4</h4>
-                <h5>Heading 5</h5>
-                <h6>Heading 6</h6>
+    <main class="root">
+        <section class="heading">
+            <div class="outer container">
+                <div class="inner">
+                    <h4 class="text-center">Heading</h4>
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="paragraph">
-        <div class="outer container">
-            <div class="inner">
-                <h4 class="text-center">Text / Paragraph</h4>
-                <div class="flex gap-2 flex-wrap">
-                    <div>
-                        <h6>Default</h6>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt nisi molestias unde porro omnis voluptas ad reprehenderit, deleniti inventore, modi obcaecati perspiciatis numquam!</p>
-                    </div>
-                    <div>
-                        <h6>Medium</h6>
-                        <p class="text text--md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt nisi molestias unde porro omnis voluptas ad reprehenderit, deleniti inventore, modi obcaecati perspiciatis numquam!</p>
-                    </div>
-                    <div>
-                        <h6>Small</h6>
-                        <p class="text text--sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt nisi molestias unde porro omnis voluptas ad reprehenderit, deleniti inventore, modi obcaecati perspiciatis numquam!</p>
-                    </div>
-                    <div>
-                        <h6>Meta</h6>
-                        <p class="text text--mt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt nisi molestias unde porro omnis voluptas ad reprehenderit, deleniti inventore, modi obcaecati perspiciatis numquam!</p>
+        </section>
+        <section class="paragraph">
+            <div class="outer container">
+                <div class="inner">
+                    <h4 class="text-center">Text / Paragraph</h4>
+                    <div class="flex gap-2 flex-wrap">
+                        <div>
+                            <h6>Default</h6>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt nisi molestias unde porro omnis voluptas ad reprehenderit, deleniti inventore, modi obcaecati perspiciatis numquam!</p>
+                        </div>
+                        <div>
+                            <h6>Medium</h6>
+                            <p class="text text--md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt nisi molestias unde porro omnis voluptas ad reprehenderit, deleniti inventore, modi obcaecati perspiciatis numquam!</p>
+                        </div>
+                        <div>
+                            <h6>Small</h6>
+                            <p class="text text--sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt nisi molestias unde porro omnis voluptas ad reprehenderit, deleniti inventore, modi obcaecati perspiciatis numquam!</p>
+                        </div>
+                        <div>
+                            <h6>Meta</h6>
+                            <p class="text text--mt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt nisi molestias unde porro omnis voluptas ad reprehenderit, deleniti inventore, modi obcaecati perspiciatis numquam!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-	<section class='button_component'>
-        <div class="outer container">
-            <div class="inner">
-                <h6 class="text-center">BUTTON Component</h6>
-                <div class="flex items-center gap-x-2">
-                    <%- include('src/ejs/components/button.ejs', {
-                        button_component: {
-                            label: 'Button'
-                        }
-                    })%>
-                    <%- include('src/ejs/components/button.ejs', {
-                        button_component: {
-                            style: 'alternative',
-                            label: 'Button'
-                        }
-                    })%>
-                    <%- include('src/ejs/components/button.ejs', {
-                        button_component: {
-                            style: 'transparent',
-                            label: 'Button'
-                        }
-                    })%>
+        </section>
+        <section class='button_component'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">BUTTON Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/button.ejs', {
+                            button_component: {
+                                label: 'Button'
+                            }
+                        })%>
+                        <%- include('src/ejs/components/button.ejs', {
+                            button_component: {
+                                style: 'alternative',
+                                label: 'Button'
+                            }
+                        })%>
+                        <%- include('src/ejs/components/button.ejs', {
+                            button_component: {
+                                style: 'transparent',
+                                label: 'Button'
+                            }
+                        })%>
+                    </div>
                 </div>
             </div>
-        </div>
-	</section>
-    <section class='buttontext_component'>
-        <div class="outer container">
-            <div class="inner">
-                <h6 class="text-center">BUTTONTEXT Component</h6>
-                <div class="flex items-center gap-x-2">
-                    <%- include('src/ejs/components/button.ejs', {
-                        button_component: {
-                            type: 'text',
-                            label: 'Button Text'
-                        }
-                    })%>
+        </section>
+        <section class='buttontext_component'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">BUTTONTEXT Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/button.ejs', {
+                            button_component: {
+                                type: 'text',
+                                label: 'Button Text'
+                            }
+                        })%>
+                    </div>
                 </div>
             </div>
-        </div>
-	</section>
-	<section class='page_component'>
-        <div class="outer container">
-            <div class="inner">
-                <h6 class="text-center">PAGE Component</h6>
-                <div class="flex items-center gap-x-2">
-                    <%- include('src/ejs/components/page.ejs', {
-                        page_component: {
-                            this: {
-                                class: 'class'
-                            },
-                            link: {
-                                href: '#',
-                                label: `label`
-                            },
-                            image_component: {
+        </section>
+        <section class='page_component'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">PAGE Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/page.ejs', {
+                            page_component: {
                                 this: {
-                                    class: 'page__image'
+                                    class: 'class'
+                                },
+                                link: {
+                                    href: '#',
+                                    label: `label`
+                                },
+                                image_component: {
+                                    this: {
+                                        class: 'page__image'
+                                    },
+                                    img: {
+                                        src: '/media/image/slider/sld1-md.jpg',
+                                        alt: 'alt'
+                                    }
+                                }
+                            }
+                        })%>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class='socials_component'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">SOCIAL Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/socials.ejs', {
+                            social_component: {}
+                        })%>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class='hours_component'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">HOURS Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/hours.ejs', {
+                            hours_component: {
+                                
+                            }
+                        })%>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class='headerText_component !mt-5'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">HEADERTEXT Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/headerText.ejs', {
+                            headerText_component: {
+                                header: {
+                                    tag: 'h2',
+                                    label: 'Label'
+                                },
+                                text: {
+                                    size: 'md',
+                                    label: [
+                                        `Label`,
+                                        `Label`,
+                                    ]
+                                },
+                                button_component: {
+                                    this: {
+                                        parent: 'headerText'
+                                    },
+                                    label: 'label'
+                                }
+                            }
+                        })%>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class='menus_component !mt-5'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">MENUS Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/menus.ejs', {
+                            menus_component: {}
+                        })%>
+                    </div>
+                </div>
+            </div>
+        </section>
+	<section class='menusItem_component !mt-5'>
+        <div class="outer container">
+            <div class="inner">
+                <h6 class="text-center">MENUSITEM Component</h6>
+                <div class="flex items-center gap-x-2">
+                    <%- include('src/ejs/components/menusItem.ejs', {
+                        menusItem_component: {
+                            title: {
+                                tag: 'h3',
+                                label: 'Spaghetti Pomodoro',
+                                icon_component: {
+                                    this: {
+                                        class: 'menusItem__icon icon--medium',
+                                    },
+                                    name: 'ph_leaf-light'
+                                }
+                            },
+                            text: {
+                                label: `Classic Italian pasta with al dente spaghetti, fresh tomato sauce, basil, garlic, and grated Parmesan cheese.`
+                            },
+                            price: '$14',
+                            image_component: {
+                                wrapper: {
+                                    parent: 'menusItem'
+                                },
+                                this: {
+                                    parent: 'menusItem'
                                 },
                                 img: {
-                                    src: '/media/image/slider/sld1-md.jpg',
-                                    alt: 'alt'
+                                    src: '/media/image/menus/pasta1.jpg',
+                                    alt: 'menu pasta'
                                 }
                             }
                         }
@@ -116,32 +224,7 @@
             </div>
         </div>
 	</section>
-	<section class='socials_component'>
-        <div class="outer container">
-            <div class="inner">
-                <h6 class="text-center">SOCIAL Component</h6>
-                <div class="flex items-center gap-x-2">
-                    <%- include('src/ejs/components/socials.ejs', {
-                        social_component: {}
-                    })%>
-                </div>
-            </div>
-        </div>
-	</section>
-	<section class='hours_component'>
-        <div class="outer container">
-            <div class="inner">
-                <h6 class="text-center">HOURS Component</h6>
-                <div class="flex items-center gap-x-2">
-                    <%- include('src/ejs/components/hours.ejs', {
-                        hours_component: {
-                            
-                        }
-                    })%>
-                </div>
-            </div>
-        </div>
-	</section>
+	</main>
 	<script type="module" src="../temporary/test.ts"></script>
     <script type="module" src="../../../src/ts/main.ts"></script>
 </body>

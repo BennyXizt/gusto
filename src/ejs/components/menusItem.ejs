@@ -1,0 +1,85 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/menusItem.ejs', { 
+//	menusItem_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof menusItem_component === 'undefined' || !menusItem_component) {
+		return
+	}
+
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...menusItem_component.this, componentName: 'menusItem'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...menusItem_component.wrapper, componentName: 'menusItem'})
+
+	var isWrapper = typeof menusItem_component.wrapper === 'object' && menusItem_component.wrapper
+	
+	
+%>
+
+<% if(isWrapper) { %>
+	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+<% } %>
+<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<div class="<%=blockClass%>__left">
+		<% if(typeof menusItem_component.image_component !== 'undefined' && menusItem_component.image_component) { %>
+			<%- include('externe/components/Image/Image.ejs', {
+				image_component: menusItem_component.image_component
+			}) %>
+		<% } %>
+		<div class="<%=blockClass%>__content">
+			<% if(typeof menusItem_component.title !== 'undefined' && menusItem_component.title) { 
+				tag = menusItem_component.title.tag
+				label = menusItem_component.title.label
+			%>
+				<<%=tag%> class="<%=blockClass%>__title">
+					<%=label%>
+
+					<% if(typeof menusItem_component.title.icon_component !== 'undefined' && menusItem_component.title.icon_component) { 
+						icon_component = menusItem_component.title.icon_component
+					%>
+						<%- include('externe/components/Icon/Icon.ejs', {
+							icon_component: icon_component
+						}) %>
+					<% } %>
+				</<%=tag%>>
+			<% } %>
+
+			<% if(typeof menusItem_component.text !== 'undefined' && menusItem_component.text) {  
+				text = 	menusItem_component.text.label
+			%>
+				<div class="<%=blockClass%>__text text text--sm">
+					<p><%=text%></p>
+				</div>
+			<% } %>
+		</div>
+	</div>
+	<% if(typeof menusItem_component.price !== 'undefined' && menusItem_component.price) { %>
+		<p class="<%=blockClass%>__right">
+			<%=menusItem_component.price%>
+		</p>
+	<% } %>
+</<%=thisTag%>>
+<% if(isWrapper) { %>
+	</<%=wrapperThisTag%>>
+<% } %>

@@ -1,0 +1,120 @@
+@use 'sass:map';
+
+.footer {
+    background-color: getThemeTag(secondary-background-color);
+    
+    @include fluid(border-radius, 12px 8px);
+    @include transition(background-color);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+
+        @include fluid((
+            padding: (64px 12px) (64px 12px) (48px 12px),
+            row-gap: 64px 32px
+        ));
+    }
+
+    &__nav {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+
+        @include fluid(gap, 64px 20px);
+    }
+
+    &__copyright {
+        @extend %textNavbar;
+
+        color: getThemeTag(secondary-text-color);
+
+        @include transition(color);
+    }
+
+    &-accordion {
+        @mixin accordionHover {
+
+            @include fluid(row-gap, 32px 16px);
+
+            .footer-accordion {
+                &__body {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: scaleY(1);
+                    max-height: 500px;
+                }
+                &__icon {
+                   transform: rotate(180deg);
+                }
+            }
+        }
+
+        display: flex;
+        flex-direction: column;
+
+        &__summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @include rem(column-gap, 12px);
+        }
+
+        &__title {
+            @extend %h6;
+        }
+
+        &__body {
+            display: flex;
+            flex-direction: column;
+            transform: scaleY(0);
+            transform-origin: top;
+            max-height: 0;
+            opacity: 0;
+            visibility: hidden;
+
+            @include transition(max-height, transform, opacity, visibility);
+            @include fluid(row-gap, 16px 8px);
+        }
+
+        &__link {
+            @extend %textNavbar;
+
+            color: getThemeTag(secondary-text-color);
+
+            @include transition(color);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                @include accordionHover;
+            }
+        }
+
+        &[data-fsc-accordion-active] {
+            @include accordionHover;
+        }
+    }
+
+    @include media(tablet) {
+        .footer {
+            &__nav {
+                flex-direction: row;
+            }
+            &-accordion {
+                @include fluid(row-gap, 32px 16px);
+
+                &__icon {
+                    display: none;
+                }
+                &__body {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: scaleY(1);
+                    max-height: unset;
+                }
+            }
+        }
+    }
+}

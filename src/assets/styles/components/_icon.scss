@@ -2,9 +2,16 @@
 
 .icon {
     @include rem((
-        width: 14px,
+        width: 18px,
         height: 18px
     ));
+
+    &--medium {
+        @include rem((
+            width: 16px,
+            height: 16px
+        ));
+    }
 
     transition: transform map.get($ANIMATIONSPEEDS, base) ease-in-out;
 }

@@ -4,18 +4,20 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"npm run server\"",
+    "dev": "concurrently \"vite\" \"php -S localhost:8000 -t ./externe/php\"",
     "server": "php -S localhost:8000 -t ./externe/php",
     "online": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "component": "tsx ./externe/plugins/createElements/create-new-component.ts",
     "section": "tsx ./externe/plugins/createElements/create-new-section.ts",
+    "page": "tsx ./externe/plugins/createElements/create-new-page.ts",
+    "delete": "tsx ./externe/plugins/createElements/delete-element.ts",
     "video": "tsx ./externe/plugins/convertMedia/convertVideo/convert-video.ts"
   },
   "devDependencies": {
     "@types/fluent-ffmpeg": "^2.1.27",
-    "@types/node": "^24.0.10",
+    "@types/node": "^24.13.2",
     "autoprefixer": "^10.4.24",
     "concurrently": "^9.2.1",
     "dotenv": "^17.0.1",

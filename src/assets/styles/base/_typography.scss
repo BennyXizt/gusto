@@ -9,12 +9,18 @@
 
 .text {
     &--md {
-        @extend %textMedium;
+        p {
+            @extend %textMedium;
+        }
     }
     &--sm {
-        @extend %textSmall;
+        p {
+            @extend %textSmall;
+        }
     }
     &--mt {
-        @extend %textMeta;
+        p {
+            @extend %textMeta;
+        }
     }
 }

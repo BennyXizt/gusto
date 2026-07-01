@@ -1,0 +1,8 @@
+@use 'sass:map';
+
+.menus {
+    display: flex;
+    flex-direction: column;
+    
+    @include rem(gap, 12px);
+}

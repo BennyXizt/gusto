@@ -58,17 +58,19 @@
 } 
 
 @mixin initiateThemeVars {
-    @include transition(background-color, color);
+    @if map.get($SETTINGS, theme) {
+        @include transition(background-color, color);
     
-    @each $theme, $map in $THEME {
-        @if($theme == 'default') {
-            @each $key, $value in $map {
-                #{"#{$THEMEPREFIX}#{$key}"}: $value;
-            }
-        } @else {
-            &[data-theme=#{$theme}] {
+        @each $theme, $map in $THEME {
+            @if($theme == 'default') {
                 @each $key, $value in $map {
                     #{"#{$THEMEPREFIX}#{$key}"}: $value;
+                }
+            } @else {
+                &[data-theme=#{$theme}] {
+                    @each $key, $value in $map {
+                        #{"#{$THEMEPREFIX}#{$key}"}: $value;
+                    }
                 }
             }
         }

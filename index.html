@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<% if(typeof head_component.lang !== 'undefined' && head_component.lang) { %>
-   <html lang="<%= head_component.lang %>">
-<% } else { %>
-   <html lang="en">
-<% } %>
+    <% if(typeof head_component.lang !== 'undefined' && head_component.lang) { %>
+        <html lang="<%= head_component.lang %>">
+    <% } else { %>
+        <html lang="en">
+    <% } %>
 <head>
-   <%- include('externe/components/Head/Head.ejs') %>
+    <%- include('src/ejs/layout/head.ejs') %>
 </head>
 <body>
-    <%- include('externe/components/DummyAside/DummyAside.ejs') %>
+    <%- include('externe/components/content/DummyAside/DummyAside.ejs') %>
     <div class="root">
         <%- include('src/ejs/layout/header.ejs', {
             header_component: {
@@ -16,11 +16,10 @@
                 // activePage: ''
             }
         })%>
-        <main class="layout">
+        <main class="layout layout--main">
 			<%- include('src/ejs/layout/slider.ejs')%>
 			<%- include('src/ejs/layout/hero.ejs')%>
 		</main>
-        <%- include('src/ejs/layout/footer.ejs') %>
     </div>
     <script type="module" src="/src/ts/main.ts"></script>
 </body>

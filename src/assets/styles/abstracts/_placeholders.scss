@@ -54,14 +54,26 @@
     @include fluid(font-size, 14px 12px);
 }
 
-%card {
-    background-color: getThemeTag(primary-background-color);
-    @include transition(background-color);
-
+%cardDefault {
     @include fluid((
         padding: 48px 12px,
         border-radius: 12px 8px
     ));
+}
+%card-1 {
+    @extend %cardDefault;
+
+    background-color: getThemeTag(primary-background-color);
+
+    @include transition(background-color);
+}
+
+%card-2 {
+    @extend %cardDefault;
+
+    background-color: getThemeTag(secondary-background-color);
+
+    @include transition(background-color);
 }
 
 %cornerDefault {

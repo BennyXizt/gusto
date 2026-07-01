@@ -29,12 +29,13 @@
       &:before {
          content: '';
          width: 100%;
-         height: fluid(12px 6px);
          background-color: getThemeTag(primary-background-color);
-         @include transition(background-color);
          position: absolute;
          top: 0;
          left: 0;
+
+         @include fluid(height, 12px 6px);
+         @include transition(background-color);
       }
    }
 

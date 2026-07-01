@@ -26,6 +26,8 @@
     position: sticky;
     top: 0;
 
+    @include fluid(border-radius, 12px 8px);
+
     .slider {
         &__list {
             display: flex;
@@ -55,7 +57,7 @@
 
         &__wrapper {
             display: none;
-            @extend %card;
+            @extend %card-1;
         }
 
         &__counter {

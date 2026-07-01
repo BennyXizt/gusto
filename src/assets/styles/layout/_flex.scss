@@ -3,7 +3,8 @@
 .flex {
     display: flex;
     flex-flow: row wrap;
-    @include fluid(gap, 12px 6px);
+    
+    @include rem(gap, 12px);
 
     & > * {
         flex: 1 1 pxAdaptive(250px);

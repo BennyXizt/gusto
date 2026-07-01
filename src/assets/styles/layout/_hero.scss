@@ -4,10 +4,11 @@
     &__container {
         display: flex;
         flex-direction: column;
-        @include fluid(gap, 12px 6px);
+
+        @include rem(gap, 12px);
     }
 
-    @media (max-width: 1221px) {
+    @include media(normal, max) {
         .button {
             &--priority {
                 order: -1;

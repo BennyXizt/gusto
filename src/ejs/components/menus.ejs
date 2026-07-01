@@ -1,0 +1,228 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/menus.ejs', { 
+//	menus_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof menus_component === 'undefined' || !menus_component) {
+		return
+	}
+
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...menus_component.this, componentName: 'menus'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...menus_component.wrapper, componentName: 'menus'})
+
+	var isWrapper = typeof menus_component.wrapper === 'object' && menus_component.wrapper
+
+	thisTag = 'section'
+
+	var accordionBlock = 'item-menu'
+
+	var data = {
+		'Pasta': [
+			{
+				title: 'Spaghetti Pomodoro',
+				icon_component: {
+					this: {
+						class: 'menusItem__icon icon--medium',
+					},
+					name: 'ph_leaf-light'
+				},
+				text: 'Classic Italian pasta with al dente spaghetti, fresh tomato sauce, basil, garlic, and grated Parmesan cheese.',
+				price: '$14',
+				image: '/media/image/menus/pasta1.jpg',
+			},
+			{
+				title: 'Seafood Lasagna',
+				// icon: 'ph_leaf-light',
+				text: 'Layered lasagna with shrimp, spinach, creamy béchamel sauce, and herbs, baked to golden perfection.',
+				price: '$10',
+				image: '/media/image/menus/pasta2.jpg',
+			},
+			{
+				title: 'Shrimp Alfredo Lasagna',
+				// icon: 'ph_leaf-light',
+				text: 'Delicate lasagna layers with succulent shrimp, creamy Alfredo sauce, fresh herbs, and a rich cheesy topping.',
+				price: '$11',
+				image: '/media/image/menus/pasta3.jpg',
+			},
+			{
+				title: 'Rigatoni alla Amatriciana',
+				// icon: 'ph_leaf-light',
+				text: 'Hearty rigatoni pasta in a rich tomato sauce with pancetta, chili flakes, Parmesan, and fresh basil.',
+				price: '$9',
+				image: '/media/image/menus/pasta4.jpg',
+			},
+			{
+				title: 'Pappardelle al Ragù',
+				// icon: 'ph_leaf-light',
+				text: 'Wide pappardelle pasta tossed in a slow-cooked meat ragù, topped with Parmesan and fresh basil leaves.',
+				price: '$6',
+				image: '/media/image/menus/pasta5.jpg',
+			},
+		],
+		'Pizza': [
+			{
+				title: 'Hawaiian Pizza',
+				text: 'Classic pizza topped with juicy pineapple, smoked ham, tangy BBQ sauce, red onions, and fresh cilantro.',
+				price: '$9.99',
+				image: '/media/image/menus/pizza1.jpg',
+			},
+			{
+				title: 'Chicken Pineapple Pizza',
+				text: 'Savory pizza topped with tender chicken, juicy pineapple, fresh herbs, melted cheese, and a tangy sauce.',
+				price: '$7.99',
+				image: '/media/image/menus/pizza2.jpg',
+			},
+			{
+				title: 'BBQ Chicken Pineapple Pizza',
+				text: 'Delicious pizza with smoky BBQ chicken, caramelized pineapple slices, melted cheese, and a garnish of fresh herbs.',
+				price: '$8.99',
+				image: '/media/image/menus/pizza3.jpg',
+			},
+			{
+				title: 'Vegetarian Garden Pizza',
+				text: 'Fresh pizza topped with cherry tomatoes, mushrooms, red onions, mozzarella, basil, and a vibrant tomato sauce.',
+				price: '$8.99',
+				image: '/media/image/menus/pizza4.jpg',
+			},
+		],
+		'Dessert': [
+			{
+				title: 'Meringue with Berries & Cream',
+				text: 'Classic dessert with a crisp meringue base, whipped cream, fresh berries, and garnishes like mint and powdered sugar.',
+				price: '$4',
+				image: '/media/image/menus/desert1.jpg',
+			},
+			{
+				title: 'Vanilla Ice Cream with Berry Compote',
+				text: 'Vanilla ice cream topped with luscious berry compote, fresh blackberries, mint, and powdered sugar.',
+				price: '$5',
+				image: '/media/image/menus/desert2.jpg',
+			},
+			{
+				title: 'Berry Yogurt Parfait',
+				text: 'Layers of creamy yogurt, fresh berries, and berry compote, topped with mint for a refreshing treat.',
+				price: '$4',
+				image: '/media/image/menus/desert3.jpg',
+			},
+			{
+				title: 'Cannoli',
+				text: 'Crispy pastry shell filled with sweet ricotta cream, dusted with powdered sugar and chocolate chips.',
+				price: '$5',
+				image: '/media/image/menus/desert4.jpg',
+			},
+			{
+				title: 'Belgian Waffle with Berries',
+				text: 'Golden waffles layered with fresh berries, whipped cream, drizzled chocolate, and a dusting of powdered sugar.',
+				price: '$7',
+				image: '/media/image/menus/desert5.jpg',
+			},
+		]
+	}
+%>
+
+<% if(isWrapper) { %>
+	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+<% } %>
+<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<% Object.entries(data).forEach(([title, entry]) => {
+		var summaryContent = [
+			include('src/ejs/components/title.ejs', {
+				title_component: {
+					this: {
+						block: accordionBlock,
+						tag: 'h2'
+					},
+					label: title
+				}
+			}),
+			include('externe/components/Icon/Icon.ejs', {
+				icon_component: {
+					this: {
+						class: `${accordionBlock}__title-icon icon--medium`
+					},
+					name: 'ph_arrow-down-light'
+				}
+			})
+		]
+
+		var bodyContent = []
+
+		Object.values(entry).forEach(obj => {
+			var component = include('src/ejs/components/menusItem.ejs', {
+				menusItem_component: {
+					this: {
+						class: `${accordionBlock}__menusItem`,
+						tag: 'article'
+					},
+					title: {
+						tag: 'h3',
+						label: obj.title,
+						icon_component: obj.icon_component
+					},
+					text: {
+						label: obj.text
+					},
+					price: obj.price,
+					image_component: {
+						wrapper: {
+							parent: 'menusItem'
+						},
+						this: {
+							parent: 'menusItem'
+						},
+						img: {
+							src: obj.image,
+							alt: 'menu pasta'
+						}
+					}
+				}
+			})
+			bodyContent.push(component)
+		})	
+	%>
+		<%- include('externe/components/Accordion/Accordion.ejs', {
+			accordion_component: {
+				this: {
+					class: `${blockClass}__item`,
+					block: accordionBlock,
+					tag: 'article',
+					dataAttribute: [
+						'data-fsc-accordion-nohover',
+						'data-fsc-accordion-behaviour=active'
+					]
+				},
+				summary: {
+					content: summaryContent
+				},
+				body: {
+					content: bodyContent
+				}
+			}
+		}) %>
+	<% }) %>
+</<%=thisTag%>>
+<% if(isWrapper) { %>
+	</<%=wrapperThisTag%>>
+<% } %>

@@ -1,7 +1,43 @@
-<%
-	blockClass = 'header'
+<% 
+	var pages = [
+		
+		{'href': './menu', 'anchor': 'Menu'},
+	]
 %>
-
-<%- include('externe/components/Header/Header.ejs', {
-	header_component
-}) %>
+<header class="header">
+    <div class="header__container container">
+        <div class="header__left">
+            <%- include('externe/components/Logo/Logo.ejs', {
+                    logo_component: {
+                        this: {
+                            parent: 'header'
+                        },
+                        homePage: header_component.homePage,
+                        type: 'icon'
+                    }
+            })%>
+            <%- include('externe/components/HeaderMenu/HeaderMenu.ejs', {
+                header_menu_component: {
+                    list: pages,
+                    activePage: header_component.activePage ?? ''
+                }
+            }) %>
+            <%- include('src/ejs/components/toggle.ejs', {
+                toggle_component: {
+                    this: {
+                        parent: 'header'
+                    }
+                }
+            })%>
+        </div>
+        <div class="header__right">
+            <%- include('src/ejs/components/burgerText.ejs', {
+                burgerText_component: {
+                    this: {
+                        parent: 'header'
+                    }
+                }
+            })%>
+        </div>
+    </div>
+</header>

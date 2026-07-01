@@ -3,13 +3,15 @@
 
 @import './default/variables';
 
-$SETTINGS: (    
+$SETTINGS: (  
     // pixels perfect
     pixels_only: true,
     // Тип адаптива контейнера
     // 1 = без брейкпоинтов
     // 2 = Boostrap сетка
-    responsive_type: 1
+    responsive_type: 1,
+    // Поддержка цветовой палитры и переключения color scheme сайта
+    theme: true
 );
 
 $CONTAINER: $DEFAULT_CONTAINER;

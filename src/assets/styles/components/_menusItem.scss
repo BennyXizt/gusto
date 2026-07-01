@@ -1,0 +1,124 @@
+@use 'sass:map';
+
+.menusItem {
+    background-color: getThemeTag(secondary-background-color);
+    display: flex;
+    align-items: center;
+
+    @include fluid((
+        border-radius: 12px 8px,
+        padding: 8px (32px 8px) 8px 8px,
+        column-gap: 30px 8px
+    ));
+    @include transition(background-color);
+
+    &__left {
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        @include fluid(gap, 32px 8px);
+    }
+
+    &__figure {
+        flex: 1 1 pxAdaptive(180px);
+        aspect-ratio: 180 / 120;
+        border-radius: 8px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &__content {
+        flex: 1 1 pxAdaptive(442px);
+        display: flex;
+        flex-direction: column;
+
+        @include rem(gap, 5px);
+    }
+
+    &__title {
+        @extend %h5;
+
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+
+        @include fluid(gap, 8px 4px);
+    }
+
+    &__text {
+        color: getThemeTag(secondary-text-color);
+        @include transition(color);
+    }
+
+    &__right {
+        @extend %h5;
+    }
+
+    @include media(mobile) {
+        @include fluid(column-gap, 80px 8px);
+    }
+}
+
+.item-menu {
+    display: flex;
+    flex-direction: column;
+
+    @include rem(row-gap, 12px);
+
+    &__summary {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: getThemeTag(secondary-background-color);
+
+        @include rem(border-radius, 12px);
+        @include fluid(padding, (24px 12px) (32px 12px));
+        @include transition(background-color);
+    }
+
+    &__body {
+        transform-origin: top;
+        opacity: 1;
+        visibility: visible;
+        transform: scaleY(1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        @include rem(row-gap, 12px);
+
+        @include transition(max-height, transform, opacity, visibility);
+    }
+
+    &__title {
+        @extend %textMeta;
+
+        font-family: map.get($FONTS, figtree);
+        font-style: normal;
+    }
+
+    &[data-fsc-accordion-active] {
+        row-gap: unset;
+
+        .item-menu {
+            &__body {
+                opacity: 0;
+                visibility: hidden;
+                transform: scaleY(0);
+                max-height: 0;
+            }
+            &__title {
+                &-icon {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}

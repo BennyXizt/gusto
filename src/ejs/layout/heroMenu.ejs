@@ -1,0 +1,46 @@
+<%
+	blockClass = 'hero'
+
+%>
+
+<section class='layout__<%=blockClass%> <%=blockClass%>'>
+	<div class='<%=blockClass%>__container container'>
+		<%- include('src/ejs/components/headerText.ejs', {
+			headerText_component: {
+				header: {
+					tag: 'h2',
+					label: 'Menu'
+				},
+				text: {
+					size: 'md',
+					label: [
+						`Explore our menu of authentic Italian dishes crafted with the finest ingredients. From handmade pasta to classic desserts, taste Italy’s best!`,
+					]
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/components/menus.ejs', {
+			menus_component: {}
+		})%>
+
+		<%- include('src/ejs/components/socials.ejs', {
+			social_component: {}
+		})%>
+
+		<%- include('src/ejs/components/button.ejs', {
+			button_component: {
+				link: '#',
+				label: 'Book a Table',
+				style: 'big',
+				priority: true,
+				icon_component: {
+					name: 'ph_arrow-right-light'
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/layout/footer.ejs') %>
+
+    </div>
+</section>

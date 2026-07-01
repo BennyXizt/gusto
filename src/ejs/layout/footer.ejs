@@ -1,5 +1,116 @@
+<% 
+   var footer = {
+      list: [
+         {
+            title: 'Pages',
+            list: [
+               {
+                  href: '#',
+                  label: 'Portfolio'
+               },
+               {
+                  href: '#',
+                  label: 'About'
+               },
+               {
+                  href: '#',
+                  label: 'Contact'
+               },
+            ]
+         },
+         {
+            title: 'CMS',
+            list: [
+               {
+                  href: '#',
+                  label: 'Work'
+               },
+               {
+                  href: '#',
+                  label: 'Work Single'
+               },
+               {
+                  href: '#',
+                  label: 'Blog'
+               },
+               {
+                  href: '#',
+                  label: 'Blog Single'
+               },
+            ]
+         },
+         {
+            title: 'Utility',
+            list: [
+               {
+                  href: '#',
+                  label: '404'
+               },
+               {
+                  href: '#',
+                  label: 'Licensing'
+               },
+            ]
+         },
+      ],
+      copyright: '© By Gola Templates'
+   }
+%> 
+ 
  <footer class="footer">
     <div class="footer__container _container">
-    
+      <nav class="footer__nav">
+         <% for(var item of footer.list) { 
+            bodyContent = []   
+
+            for(var link of item.list) {
+               bodyContent.push(
+                  `<li class="footer-accordion__item">
+                        <a href="${link.href}" class="footer-accordion__link">${link.label}</a>
+                  </li>`
+               )
+            }
+         %>
+            <%- include('externe/components/Accordion/Accordion.ejs', {
+               accordion_component: {
+                  this: {
+                     class: 'footer__accordion',
+                     block: 'footer-accordion',
+                     tag: 'article',
+                  },
+                  media: {
+                     type: 'max-width',
+                     label: '767.98px'
+                  },
+                  behaviour: 'alternative',
+                  summary: {
+                     content: [
+                        `<h2 data-fsc-accordion-summary class="footer-accordion__title">${item.title}</h2>`,
+                        include('externe/components/Icon/Icon', {
+                           icon_component: {
+                              this: {
+                                 class: 'footer-accordion__icon icon--medium',
+                              },
+                              name: 'ph_caret-down-light'
+                           }
+                        })
+                     ]
+                  },
+                  body: {
+                     this: {
+                        tag: 'ul',
+                     },
+                     content: bodyContent
+                  }
+                  
+               }
+            }) %>
+         <% } %>
+      </nav>
+      <p class="footer__copyright">
+         <a href="#" class="footer__link">
+            <%=footer.copyright%>   
+         </a>   
+      </p>
     </div>
  </footer>

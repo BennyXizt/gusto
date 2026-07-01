@@ -1,0 +1,86 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/headerText.ejs', { 
+//	headerText_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof headerText_component === 'undefined' || !headerText_component) {
+		return
+	}
+
+	headerText_component.this = {
+		...headerText_component.this,
+		tag: headerText_component.this && headerText_component.this.tag ? headerText_component.this.tag : 'article'
+	}
+
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...headerText_component.this, componentName: 'headerText'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...headerText_component.wrapper, componentName: 'headerText'})
+
+	var isWrapper = typeof headerText_component.wrapper === 'object' && headerText_component.wrapper
+%>
+
+<% if(isWrapper) { %>
+	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+<% } %>
+<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<% if(typeof headerText_component.header !== 'undefined' && headerText_component.header) { 
+		tag = headerText_component.header.tag ?? 'h6'
+		label = headerText_component.header.label
+	%>
+		<<%=tag%> class='<%=blockClass%>__title'>
+			<%=label%>
+		</<%=tag%>>
+	<% } %>
+
+	<div class="<%=blockClass%>__wrapper">
+		
+		<% if(typeof headerText_component.text !== 'undefined' && headerText_component.text) { 
+			var textSizes = ['md', 'sm', 'mt']
+			var textClass = `${blockClass}__text`
+
+			if(typeof headerText_component.text.size !== 'undefined' && headerText_component.text.size) {
+				if(textSizes.includes(headerText_component.text.size)) {
+					textClass += ` text--${headerText_component.text.size}`
+				}
+			}
+			
+		%>
+			<div class="<%=textClass%>">
+				<% for(var text of headerText_component.text.label) { %>
+					<p><%=text%></p>
+				<% } %>	
+			</div>
+		<% } %>
+
+		<% if(typeof headerText_component.button_component !== 'undefined' && headerText_component.button_component) { %>
+			<%- include('src/ejs/components/button.ejs', {
+				button_component: headerText_component.button_component
+			}) %>
+		<% } %>	
+
+	</div>
+</<%=thisTag%>>
+<% if(isWrapper) { %>
+	</<%=wrapperThisTag%>>
+<% } %>

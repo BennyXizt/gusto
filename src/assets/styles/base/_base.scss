@@ -96,25 +96,35 @@ main {
 
 .layout {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   align-content: flex-start;
-  gap: fluid(12px 6px) pxAdaptive(12px);
+  gap: pxAdaptive(12px);
 
-  $slider_offset: 100px;
+  &--main {
+    .layout {
+      &__slider {
+        flex: 0.787687 1 0; // 0.787685 (1484 / 1884)
+      }
 
-  &__slider {
-    $px: 1920px - 12px - 6px - 400px - $slider_offset;
-    $basis: math.floor(math.div($px * 100%, 1920px)); // 418px
-    flex: 1 1 pxAdaptive($basis);
-
-    overflow: hidden;
-
-    @include fluid(border-radius, 12px 8px);
+      &__hero {
+        flex: 0.212314 1 0; // 0.212314 (400 / 1884)
+        min-width: 350px;
+      }
+    }
   }
 
-  &__hero {
-    $px: 1920px - 12px - 6px - 1484px + $slider_offset;
-    $basis: math.floor(math.div($px * 100%, 1920px)); // 1502px
-    flex: 1 1 pxAdaptive($basis);
+  &--menu {
+    .layout {
+        &__slider {
+          flex: 0.575371 1 0; // 0.5753715499 (1084 / 1884)
+        }
+        &__hero {
+          flex: 0.424629 1 0; // 0.4246284501 (800 / 1884)
+        }
+    }
+  }
+
+  @include media(normal) {
+    flex-direction: row;
   }
 }
