@@ -7,6 +7,9 @@
 	<div class='<%=blockClass%>__container container'>
 		<%- include('src/ejs/components/headerText.ejs', {
 			headerText_component: {
+				this: {
+					parent: 'hero'
+				},
 				header: {
 					tag: 'h2',
 					label: 'Menu'
@@ -21,15 +24,26 @@
 		})%>
 
 		<%- include('src/ejs/components/menus.ejs', {
-			menus_component: {}
+			menus_component: {
+				this: {
+					parent: 'hero'
+				},
+			}
 		})%>
 
 		<%- include('src/ejs/components/socials.ejs', {
-			social_component: {}
+			social_component: {
+				this: {
+					parent: 'hero'
+				},
+			}
 		})%>
 
 		<%- include('src/ejs/components/button.ejs', {
 			button_component: {
+				this: {
+					parent: 'hero'
+				},
 				link: '#',
 				label: 'Book a Table',
 				style: 'big',

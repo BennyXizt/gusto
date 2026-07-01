@@ -53,6 +53,10 @@
 %textButton {
     @include fluid(font-size, 14px 12px);
 }
+%textLabel {
+    line-height: .9;
+    @include fluid(font-size, 16px 14px);
+}
 
 %cardDefault {
     @include fluid((

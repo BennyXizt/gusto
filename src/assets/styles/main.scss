@@ -16,7 +16,8 @@
   './layout/footer',
   './layout/slider',
   './layout/hero',
-  './layout/flex';
+  './layout/flex',
+  './layout/heroReservation';
 // internal layout END
 
 @import
@@ -35,13 +36,17 @@
   './components/page',
   './components/socials',
   './components/hours',
-  './components/headerText',
   './components/menus',
   './components/title',
-	'./components/menusItem';
+  './components/menusItem',
+  './components/formReservation',
+  './components/form',
+	'./components/reservation';
 // internal components END
 
 // internal pages START
 @import
-  './pages/menu';
+  './pages/menu',
+  './pages/about',
+  './pages/reservation';
 // internal pages END

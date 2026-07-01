@@ -12,6 +12,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
+        menu: 'menu.html',
+        about: 'about.html',
+        reservation: 'reservation.html',
       },
       output: {
          // JS

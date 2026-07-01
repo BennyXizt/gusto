@@ -1,0 +1,91 @@
+<%
+	blockClass = 'hero'
+%>
+
+<section class='layout__<%=blockClass%> <%=blockClass%>'>
+	<div class='<%=blockClass%>__container container'>
+		<%- include('src/ejs/components/headerText.ejs', {
+			headerText_component: {
+				this: {
+					parent: 'hero'
+				},
+				header: {
+					tag: 'h2',
+					label: 'About'
+				},
+				text: {
+					size: 'md',
+					label: [
+						`Founded by Italian owners, our restaurant brings authentic flavors from Italy to Prague, celebrating tradition, quality ingredients, and true hospitality`,
+					]
+				},
+				button_component: {
+					this: {
+						parent: 'headerText'
+					},
+					label: 'Explore'
+				}
+			}
+		})%>
+
+		<%- include('externe/components/Image/Image.ejs', {
+			image_component: {
+				this: {
+					parent: 'hero'
+				},
+				wrapper: {
+					parent: 'hero',
+					tag: 'figure'
+				},
+				img: {
+					src: '/media/image/family.jpg',
+					alt: ''
+				}
+			}
+		}) %>
+
+		<%- include('src/ejs/components/headerText.ejs', {
+			headerText_component: {
+				this: {
+					parent: 'hero'
+				},
+				header: {
+					tag: 'h2',
+					label: 'Maria & Giovanni'
+				},
+				text: {
+					size: 'md',
+					label: [
+						`Meet Maria and Giovanni, the heart and soul behind our restaurant. Hailing from the beautiful region of Tuscany, they’ve always had a love for cooking, rooted in family traditions and the rich flavors of Italy.`,
+						`After years of honing their skills in Italy’s finest kitchens, they dreamed of sharing authentic Italian flavors with the world—sparking a passion to bring true Italian dining to the vibrant city of Prague.`
+					]
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/components/socials.ejs', {
+			social_component: {
+				this: {
+					parent: 'hero'
+				},
+			}
+		})%>
+
+		<%- include('src/ejs/components/button.ejs', {
+			button_component: {
+				this: {
+					parent: 'hero'
+				},
+				link: '#',
+				label: 'Book a Table',
+				style: 'big',
+				priority: true,
+				icon_component: {
+					name: 'ph_arrow-right-light'
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/layout/footer.ejs') %>
+	</div>
+</section>

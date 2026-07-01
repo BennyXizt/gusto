@@ -1,0 +1,21 @@
+@use 'sass:map';
+
+.reservation {
+    @extend %card-2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100dvh;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        @include rem(row-gap, 8px);
+    }
+
+    &__text {
+        color: getThemeTag(secondary-text-color);
+    }
+}

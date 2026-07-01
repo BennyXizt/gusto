@@ -1,0 +1,27 @@
+<%
+	blockClass = 'hero'
+%>
+
+<section class='layout__<%=blockClass%> <%=blockClass%>'>
+	<div class='<%=blockClass%>__container container'>
+		<%- include('src/ejs/components/reservation.ejs', {
+			reservation_component: {
+				this: {
+					parent: 'hero',
+					tag: 'article'
+				},
+				title: {
+					tag: 'h2',
+					label: 'Book a Table'
+				},
+				text: {
+					list: [
+						'Book your table and savor the authentic taste of Italy in the heart of Prague. We look forward to welcoming you to an unforgettable dining experience!'
+					]
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/layout/footer.ejs') %>
+	</div>
+</section>

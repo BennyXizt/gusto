@@ -1,0 +1,20 @@
+
+.form {
+    &__field {
+        $gap: 12px;
+
+        flex: 1 1 100%;
+        display: flex;
+        flex-direction: column;
+
+        @include rem(row-gap, $gap);
+
+        &--50 {
+            flex: 1 1 calc((100% - $gap) / 2);
+        }
+
+        &--33 {
+            flex: 1 1 calc((100% - $gap * 2) / 3);
+        }
+    }
+}

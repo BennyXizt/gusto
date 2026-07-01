@@ -94,6 +94,34 @@ main {
    
 }
 
+form {
+  display: flex;
+  flex-flow: row wrap;
+
+  @include fluid(gap, (24px 12px) 12px);
+
+  label {
+    @extend %textLabel;
+
+    font-family: map.get($FONTS, goudy);
+    font-style: italic;
+  }
+
+  input {
+    @extend %textDefault;
+
+    color: getThemeTag(secondary-text-color);
+    background-color: getThemeTag(primary-background-color);
+
+    @include fluid(padding, (12px 8px) (16px 8px));
+    @include rem(border-radius, 6px);
+
+    &::placeholder {
+      color: getThemeTag(secondary-text-color);
+    }
+  }
+}
+
 .layout {
   display: flex;
   flex-flow: column wrap;
@@ -113,7 +141,8 @@ main {
     }
   }
 
-  &--menu {
+  &--menu,
+  &--about {
     .layout {
         &__slider {
           flex: 0.575371 1 0; // 0.5753715499 (1084 / 1884)
@@ -121,6 +150,17 @@ main {
         &__hero {
           flex: 0.424629 1 0; // 0.4246284501 (800 / 1884)
         }
+    }
+  }
+
+  &--reservation {
+    .layout {
+      &__slider {
+        flex: 0.708067 1 0; // 0.7080679406 (1334 / 1884)
+      }
+      &__hero {
+        flex: 0.291933 1 0; // 0.2919320594 (550 / 1884)
+      }
     }
   }
 

@@ -143,36 +143,6 @@
                 </div>
             </div>
         </section>
-        <section class='headerText_component !mt-5'>
-            <div class="outer container">
-                <div class="inner">
-                    <h6 class="text-center">HEADERTEXT Component</h6>
-                    <div class="flex items-center gap-x-2">
-                        <%- include('src/ejs/components/headerText.ejs', {
-                            headerText_component: {
-                                header: {
-                                    tag: 'h2',
-                                    label: 'Label'
-                                },
-                                text: {
-                                    size: 'md',
-                                    label: [
-                                        `Label`,
-                                        `Label`,
-                                    ]
-                                },
-                                button_component: {
-                                    this: {
-                                        parent: 'headerText'
-                                    },
-                                    label: 'label'
-                                }
-                            }
-                        })%>
-                    </div>
-                </div>
-            </div>
-        </section>
         <section class='menus_component !mt-5'>
             <div class="outer container">
                 <div class="inner">
@@ -185,45 +155,71 @@
                 </div>
             </div>
         </section>
-	<section class='menusItem_component !mt-5'>
-        <div class="outer container">
-            <div class="inner">
-                <h6 class="text-center">MENUSITEM Component</h6>
-                <div class="flex items-center gap-x-2">
-                    <%- include('src/ejs/components/menusItem.ejs', {
-                        menusItem_component: {
-                            title: {
-                                tag: 'h3',
-                                label: 'Spaghetti Pomodoro',
-                                icon_component: {
-                                    this: {
-                                        class: 'menusItem__icon icon--medium',
+        <section class='menusItem_component !mt-5'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">MENUSITEM Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/menusItem.ejs', {
+                            menusItem_component: {
+                                title: {
+                                    tag: 'h3',
+                                    label: 'Spaghetti Pomodoro',
+                                    icon_component: {
+                                        this: {
+                                            class: 'menusItem__icon icon--medium',
+                                        },
+                                        name: 'ph_leaf-light'
+                                    }
+                                },
+                                text: {
+                                    label: `Classic Italian pasta with al dente spaghetti, fresh tomato sauce, basil, garlic, and grated Parmesan cheese.`
+                                },
+                                price: '$14',
+                                image_component: {
+                                    wrapper: {
+                                        parent: 'menusItem'
                                     },
-                                    name: 'ph_leaf-light'
-                                }
-                            },
-                            text: {
-                                label: `Classic Italian pasta with al dente spaghetti, fresh tomato sauce, basil, garlic, and grated Parmesan cheese.`
-                            },
-                            price: '$14',
-                            image_component: {
-                                wrapper: {
-                                    parent: 'menusItem'
-                                },
-                                this: {
-                                    parent: 'menusItem'
-                                },
-                                img: {
-                                    src: '/media/image/menus/pasta1.jpg',
-                                    alt: 'menu pasta'
+                                    this: {
+                                        parent: 'menusItem'
+                                    },
+                                    img: {
+                                        src: '/media/image/menus/pasta1.jpg',
+                                        alt: 'menu pasta'
+                                    }
                                 }
                             }
-                        }
-                    })%>
+                        })%>
+                    </div>
                 </div>
             </div>
-        </div>
-	</section>
+        </section>
+        <section class='reservation_component !mt-5'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">RESERVATION Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/reservation.ejs', {
+                            reservation_component: {
+                                this: {
+                                    parent: 'hero',
+                                    tag: 'article'
+                                },
+                                title: {
+                                    tag: 'h2',
+                                    label: 'Book a Table'
+                                },
+                                text: {
+                                    list: [
+                                        'Book your table and savor the authentic taste of Italy in the heart of Prague. We look forward to welcoming you to an unforgettable dining experience!'
+                                    ]
+                                }
+                            }
+                        })%>
+                    </div>
+                </div>
+            </div>
+        </section>
 	</main>
 	<script type="module" src="../temporary/test.ts"></script>
     <script type="module" src="../../../src/ts/main.ts"></script>

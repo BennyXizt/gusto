@@ -50,6 +50,7 @@
 		}))
 	}
 	
+	
 %>
 
 <section class='layout__<%=blockClass%> <%=blockClass%>'>
@@ -60,6 +61,9 @@
 
 		<%- include('src/ejs/components/button.ejs', {
 			button_component: {
+				this: {
+					parent: 'hero'
+				},
 				link: '#',
 				label: 'Book a Table',
 				style: 'big',
@@ -71,11 +75,19 @@
 		})%>
 
 		<%- include('src/ejs/components/socials.ejs', {
-			social_component: {}
+			social_component: {
+				this: {
+					parent: 'hero'
+				}
+			}
 		})%>
 
 		<%- include('src/ejs/components/hours.ejs', {
-			hours_component: {}
+			hours_component: {
+				this: {
+					parent: 'hero'
+				}
+			}
 		})%>
 
 		<%- include('src/ejs/layout/footer.ejs') %>
