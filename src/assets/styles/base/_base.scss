@@ -113,12 +113,9 @@ form {
     color: getThemeTag(secondary-text-color);
     background-color: getThemeTag(primary-background-color);
 
+    @include transition(color, background-color);
     @include fluid(padding, (12px 8px) (16px 8px));
     @include rem(border-radius, 6px);
-
-    &::placeholder {
-      color: getThemeTag(secondary-text-color);
-    }
   }
 }
 
@@ -128,7 +125,8 @@ form {
   align-content: flex-start;
   gap: pxAdaptive(12px);
 
-  &--main {
+  &--main,
+  &--restaurant {
     .layout {
       &__slider {
         flex: 0.787687 1 0; // 0.787685 (1484 / 1884)

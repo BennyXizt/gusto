@@ -34,7 +34,7 @@ function watcherObserver(entry: IntersectionObserverEntry, observer: Intersectio
   
   if(entry.isIntersecting) {    
     el.classList.add('intersected')
-
+    
     if(isFinite) el.setAttribute('data-fsc-watcher-showed', '')
   }  
   else {

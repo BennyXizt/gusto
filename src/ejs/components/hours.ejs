@@ -70,7 +70,7 @@
 <% if(isWrapper) { %>
 	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
 <% } %>
-<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+<<%=thisTag%> data-fsc-watcher data-fsc-watcher-once <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
 	<caption class="<%=blockClass%>__caption">Opening Hours</caption>
 	<tbody class="<%=blockClass%>__list">
 		<% for(var hour of hours) { %>

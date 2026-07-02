@@ -61,7 +61,7 @@
    &__right {
       @extend %corner-2;
 
-      right: 0;
+      right: -1px;
    }
    &__burgerText {
       @extend %textNavbar;

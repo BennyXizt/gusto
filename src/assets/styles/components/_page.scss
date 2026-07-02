@@ -2,9 +2,12 @@
 
 .page {
     overflow: hidden;
+
     @include rem(border-radius, 12px);
 
     &__figure {
+        @extend %watcherDefault;
+
         position: relative;
         aspect-ratio: 400 / 285.5;
         overflow: hidden;

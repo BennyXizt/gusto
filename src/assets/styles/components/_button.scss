@@ -2,6 +2,7 @@
 
 .button {
     @extend %textButton;
+    @extend %watcherDefault;
 
     display: inline-flex;
     justify-content: center;

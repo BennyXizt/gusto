@@ -1,6 +1,8 @@
 @use 'sass:map';
 
 .hero {
+    position: relative;
+
     &__container {
         display: flex;
         flex-direction: column;
@@ -9,6 +11,8 @@
     }
 
     &__figure {
+        @extend %watcherDefault;
+        
         width: 100%;
         aspect-ratio: 800 / 578;
 
@@ -18,6 +22,40 @@
             object-fit: cover;
             object-position: center;
         }
+    }
+
+    &__background {
+        width: 100dvw;
+        height: 100dvh;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &__wrapper {
+        @extend %card-1;
+
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+
+        @include rem(max-width, 450px);
+
+        @include fluid((
+            bottom: 40px 10px,
+            left: 40px 10px,
+            gap: 32px 16px
+        ))
+    }
+
+    &__text {
+        color: getThemeTag(secondary-text-color);
+
+        @include transition(color);
     }
 
     @include media(normal, max) {

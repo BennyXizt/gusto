@@ -1,0 +1,56 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/map.ejs', { 
+//	map_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof map_component === 'undefined' || !map_component) {
+		return
+	}
+
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...map_component.this, componentName: 'map'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...map_component.wrapper, componentName: 'map'})
+
+	var isWrapper = typeof map_component.wrapper === 'object' && map_component.wrapper
+%>
+
+<% if(isWrapper) { %>
+	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+<% } %>
+<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<iframe 
+		class="<%=blockClass%>__iframe"
+		loading="lazy"
+		scrolling="no" 
+  		marginheight="0" 
+  		marginwidth="0"
+		src="https://www.openstreetmap.org/export/embed.html?bbox=14.427130222320558%2C50.08052527616207%2C14.429383277893068%2C50.08176968854489&amp;layer=mapnik&amp;marker=50.08114748639136%2C14.428256750106812"
+	></iframe>
+	<small class="<%=blockClass%>__link">
+		<a href="https://www.openstreetmap.org/?mlat=50.081147&amp;mlon=14.428257#map=19/50.081147/14.428257">Get Directions</a>
+	</small>
+</<%=thisTag%>>
+<% if(isWrapper) { %>
+	</<%=wrapperThisTag%>>
+<% } %>

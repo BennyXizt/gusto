@@ -17,5 +17,7 @@
 
     &__text {
         color: getThemeTag(secondary-text-color);
+
+        @include transition(color);
     }
 }

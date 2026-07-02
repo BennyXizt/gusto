@@ -79,7 +79,7 @@
 <% if(isWrapper) { %>
 	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
 <% } %>
-<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+<<%=thisTag%> data-fsc-watcher data-fsc-watcher-once <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
 	<% if(typeof button_component.label !== 'undefined' && button_component.label) { %>
 		<%= button_component.label %>
 	<% } %>

@@ -5,15 +5,15 @@
             title: 'Pages',
             list: [
                {
-                  href: '#',
+                  href: './restaurant',
                   label: 'Portfolio'
                },
                {
-                  href: '#',
+                  href: './about',
                   label: 'About'
                },
                {
-                  href: '#',
+                  href: './reservation',
                   label: 'Contact'
                },
             ]
@@ -43,7 +43,7 @@
             title: 'Utility',
             list: [
                {
-                  href: '#',
+                  href: './404',
                   label: '404'
                },
                {
@@ -59,7 +59,7 @@
  
  <footer class="hero__footer footer">
     <div class="footer__container _container">
-      <nav class="footer__nav">
+      <nav class="footer__nav" data-fsc-watcher data-fsc-watcher-once>
          <% for(var item of footer.list) { 
             bodyContent = []   
 
@@ -76,7 +76,7 @@
                   this: {
                      class: 'footer__accordion',
                      block: 'footer-accordion',
-                     tag: 'article',
+                     tag: 'article'
                   },
                   media: {
                      type: 'max-width',
@@ -85,7 +85,7 @@
                   behaviour: 'alternative',
                   summary: {
                      content: [
-                        `<h2 data-fsc-accordion-summary class="footer-accordion__title">${item.title}</h2>`,
+                        `<h2 class="footer-accordion__title">${item.title}</h2>`,
                         include('externe/components/Icon/Icon', {
                            icon_component: {
                               this: {

@@ -40,7 +40,7 @@
 <% if(isWrapper) { %>
 	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
 <% } %>
-<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+<<%=thisTag%> data-fsc-watcher data-fsc-watcher-once <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
 	<div class="<%=blockClass%>__left">
 		<% if(typeof menusItem_component.image_component !== 'undefined' && menusItem_component.image_component) { %>
 			<%- include('externe/components/Image/Image.ejs', {

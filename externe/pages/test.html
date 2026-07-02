@@ -220,6 +220,34 @@
                 </div>
             </div>
         </section>
+        <section class='address_component !mt-5'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">ADDRESS Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/address.ejs', {
+                            address_component: {
+                                
+                            }
+                        })%>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class='map_component !mt-5'>
+            <div class="outer container">
+                <div class="inner">
+                    <h6 class="text-center">MAP Component</h6>
+                    <div class="flex items-center gap-x-2">
+                        <%- include('src/ejs/components/map.ejs', {
+                            map_component: {
+                                
+                            }
+                        })%>
+                    </div>
+                </div>
+            </div>
+        </section>
 	</main>
 	<script type="module" src="../temporary/test.ts"></script>
     <script type="module" src="../../../src/ts/main.ts"></script>

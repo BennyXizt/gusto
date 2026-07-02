@@ -1,0 +1,43 @@
+<%
+	blockClass = 'hero'
+%>
+
+<section class='layout__<%=blockClass%> <%=blockClass%>'>
+	<div class='<%=blockClass%>__container container'>
+
+		<%- include('src/ejs/components/socials.ejs', {
+			social_component: {
+				this: {
+					parent: 'hero'
+				},
+			}
+		})%>
+
+		<%- include('src/ejs/components/hours.ejs', {
+			hours_component: {
+				this: {
+					parent: 'hero'
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/components/address.ejs', {
+			address_component: {
+				this: {
+					parent: 'hero',
+					tag: 'article'
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/components/map.ejs', {
+			map_component: {
+				this: {
+					parent: 'hero'
+				}
+			}
+		})%>
+
+		<%- include('src/ejs/layout/footer.ejs') %>
+	</div>
+</section>

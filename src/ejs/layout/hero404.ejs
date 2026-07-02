@@ -1,0 +1,39 @@
+<%
+	blockClass = 'hero'
+%>
+
+<section class='layout__<%=blockClass%> <%=blockClass%>'>
+	<div class='<%=blockClass%>__container container'>
+		<%- include('externe/components/Image/Image.ejs', {
+			image_component: {
+				this: {
+					parent: 'hero'
+				},
+				wrapper: {
+					block: 'hero__background',
+					tag: 'figure'
+				},
+				img: {
+					src: '/media/image/background.jpg',
+					alt: 'not found'
+				}
+			}
+		}) %>
+
+		<article class="<%=blockClass%>__wrapper">
+			<h1 class="<%=blockClass%>__title">Mama Mia!</h1>
+			<div class="<%=blockClass%>__text">
+				<p>Oops, this page is off the menu! Nonna will help you find your way back to something delicious.</p>
+			</div>
+			<%- include('src/ejs/components/button.ejs', {
+				button_component: {
+					this: {
+						parent: 'hero'
+					},
+					label: 'Back to the Kitchen',
+					link: './'
+				}
+			}) %>
+		</article>
+	</div>
+</section>

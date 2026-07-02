@@ -45,6 +45,7 @@
             picture {
                 display: block;
                 aspect-ratio: 1484 / 1056;
+                width: 100%;
             }
 
             img {
@@ -56,8 +57,9 @@
         }
 
         &__wrapper {
-            display: none;
             @extend %card-1;
+
+            display: none;
         }
 
         &__counter {
@@ -137,13 +139,10 @@
             right: 0;
         }
 
-       
-
         @include media(mobile) {
             &__wrapper {
                 display: flex;
                 flex-direction: column;
-
                 position: absolute;
                 
                 @include rem(max-width, 450px);
@@ -152,9 +151,9 @@
                     bottom: 40px 10px,
                     left: 40px 10px,
                     gap: 32px 16px
-                ))
+                ));
             }
-
+          
             &__content {
                 display: flex;
                 flex-direction: column;
@@ -164,6 +163,13 @@
                     color: getThemeTag(secondary-text-color);
                     @include transition(color);
                 }
+            }
+
+            &__element {
+                picture {
+                    aspect-ratio: unset;
+                    height: 100dvh;
+                } 
             }
         }
     }

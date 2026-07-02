@@ -1,0 +1,39 @@
+@use 'sass:map';
+
+.headerText {
+    @extend %watcherDefault;
+    @extend %card-2;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @include fluid(row-gap, 96px 32px);
+
+    &__title {
+        @extend %h1;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-end;
+
+        @include fluid(row-gap, 129px 32px);
+    }
+
+    &__text {
+        flex: 1 1 pxAdaptive(500px);
+        color: getThemeTag(secondary-text-color);
+        display: flex;
+        flex-direction: column;
+
+        @include fluid(row-gap, 28px 14px);
+        @include transition(color);
+    }
+
+    &__button {
+        flex: 1 1 pxAdaptive(70px);
+    }
+
+}

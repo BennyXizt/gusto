@@ -1,7 +1,8 @@
 @use 'sass:map';
 
 .hours {
-    @extend %card-1;
+    @extend %watcherDefault;
+    @extend %card-2;
 
     display: flex;
     flex-direction: column;

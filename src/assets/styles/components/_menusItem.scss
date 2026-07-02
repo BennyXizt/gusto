@@ -1,6 +1,8 @@
 @use 'sass:map';
 
 .menusItem {
+    @extend %watcherDefault;
+    
     background-color: getThemeTag(secondary-background-color);
     display: flex;
     align-items: center;

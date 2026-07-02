@@ -1,0 +1,42 @@
+@use 'sass:map';
+
+.address {
+    @extend %card-2;
+
+    display: flex;
+    flex-direction: column;
+
+    @include fluid(row-gap, 32px 16px);
+
+    &__title {
+        @extend %textMeta;
+
+        font-family: map.get($FONTS, figtree);
+        font-style: normal;
+        color: getThemeTag(secondary-text-color);
+
+        @include transition(color);
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+
+        @include rem(gap, 12px);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        @include rem(gap, 8px);
+
+        p {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+
+            @include rem(gap, 8px);
+        }
+    }
+}

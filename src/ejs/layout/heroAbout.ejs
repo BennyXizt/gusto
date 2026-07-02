@@ -31,11 +31,15 @@
 		<%- include('externe/components/Image/Image.ejs', {
 			image_component: {
 				this: {
-					parent: 'hero'
+					parent: 'hero',
 				},
 				wrapper: {
 					parent: 'hero',
-					tag: 'figure'
+					tag: 'figure',
+					dataAttribute: [
+						'data-fsc-watcher',
+						'data-fsc-watcher-once',
+					]
 				},
 				img: {
 					src: '/media/image/family.jpg',

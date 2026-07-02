@@ -44,7 +44,7 @@
 	<% if(isWrapper) { %>
 		<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
 	<% } %>
-	<figure class="<%=blockClass%>__figure">
+	<figure class="<%=blockClass%>__figure" data-fsc-watcher data-fsc-watcher-once>
 		<%- include('externe/components/Image/Image.ejs', {
 			image_component: page_component.image_component
 		}) %>

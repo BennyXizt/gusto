@@ -14,10 +14,8 @@
 @import
   './layout/header',
   './layout/footer',
-  './layout/slider',
   './layout/hero',
-  './layout/flex',
-  './layout/heroReservation';
+  './layout/flex';
 // internal layout END
 
 @import
@@ -39,14 +37,12 @@
   './components/menus',
   './components/title',
   './components/menusItem',
-  './components/formReservation',
+  './components/headerText',
   './components/form',
-	'./components/reservation';
+  './components/reservation',
+  './components/address',
+  './components/map';
 // internal components END
 
 // internal pages START
-@import
-  './pages/menu',
-  './pages/about',
-  './pages/reservation';
 // internal pages END

@@ -1,0 +1,90 @@
+<%
+// Пример вызова в шаблоне (EJS):
+//
+// <\%- include('src/ejs/components/address.ejs', { 
+//	address_component: {
+//		this: {
+//			parent: 'parentClass',
+//			block: 'childBlockClass',
+//			class: ['childClass'],
+//			id: ['childID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		},
+//		wrapper: {
+//			parent: 'wrapperParentClass',
+//			block: 'wrapperChildBlockClass',
+//			class: ['wrapperChildClass'],
+//			id: ['wrapperChildID'],
+//			tag: 'div',
+//			style: ['customStyle'],
+//			dataAttribute: ['customDataAttributes'], 
+//		}
+//	}
+//}) %>
+%>
+<%
+	if(typeof address_component === 'undefined' || !address_component) {
+		return
+	}
+
+	var {blockClass, thisClass, thisID, thisTag, thisStyles, thisDataAttributes} = externe.setupEJSComponent({...address_component.this, componentName: 'address'})
+	var {isWrapper, blockClass: wrapperBlockClass, thisClass: wrapperThisClass, thisID: wrapperThisID, thisTag: wrapperThisTag, thisStyles: wrapperThisStyles, thisDataAttributes: wrapperThisDataAttributes} = externe.setupEJSComponent({...address_component.wrapper, componentName: 'address'})
+
+	var isWrapper = typeof address_component.wrapper === 'object' && address_component.wrapper
+
+	var info = {
+		address: {
+			street: 'Václavské náměstí 45',
+			code: '110 00 Praha'
+		},
+		contacts: {
+			tel: '+420 123 456 789',
+			mail: 'info@gusto.example'
+		}
+	}
+%>
+
+<% if(isWrapper) { %>
+	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
+<% } %>
+<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+	<div class="<%=blockClass%>__field">
+		<h2 class="<%=blockClass%>__title">Address</h2>
+		<div class="<%=blockClass%>__content">
+			<p><%=info.address.street%></p>
+			<p><%=info.address.code%></p>
+		</div>
+	</div>
+	<div class="<%=blockClass%>__field">
+		<h2 class="<%=blockClass%>__title">Contact</h2>
+		<div class="<%=blockClass%>__content">
+			<p>
+				<%- include('externe/components/Icon/Icon.ejs', {
+					icon_component: {
+						this: {
+							block: 'address__icon icon icon--medium'
+						},
+						name: 'ph_phone-light'
+					}
+				}) %>
+				<%=info.contacts.tel%>
+			</p>
+			<p>
+				<%- include('externe/components/Icon/Icon.ejs', {
+					icon_component: {
+						this: {
+							block: 'address__icon icon icon--medium'
+						},
+						name: 'ph_envelope-simple-light'
+					}
+				}) %>
+				<%=info.contacts.mail%>
+			</p>
+		</div>
+	</div>
+</<%=thisTag%>>
+<% if(isWrapper) { %>
+	</<%=wrapperThisTag%>>
+<% } %>
