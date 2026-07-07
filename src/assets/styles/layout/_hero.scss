@@ -25,7 +25,6 @@
     }
 
     &__background {
-        width: 100dvw;
         height: 100dvh;
 
         img {
@@ -37,6 +36,7 @@
     }
 
     &__wrapper {
+        @extend %watcherDefault;
         @extend %card-1;
 
         position: absolute;

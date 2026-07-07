@@ -15,6 +15,8 @@ export default defineConfig({
         menu: 'menu.html',
         about: 'about.html',
         reservation: 'reservation.html',
+        restaurant: 'restaurant.html',
+        404: '404.html',
       },
       output: {
          // JS

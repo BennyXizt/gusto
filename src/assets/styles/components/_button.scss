@@ -13,7 +13,7 @@
     color: getThemeTag(primary-background-color);
     border-radius: pxAdaptive(6px);
 
-    @include transition(background-color, color);
+    @include transition(background-color, color, transform);
     @include fluid(padding, (12px 10px) (14px 10px));
 
     &--alternative {
@@ -54,7 +54,7 @@
 
     @media (hover: hover) and (pointer: fine) {
         &:hover {
-            
+            transform: scale(.95);
         }
     }
 }

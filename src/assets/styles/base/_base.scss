@@ -94,6 +94,31 @@ main {
    
 }
 
+a {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: .5px;
+    background-color: getThemeTag(primary-text-color);
+
+    @include transition(width, left);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      &::after {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+}
+
 form {
   display: flex;
   flex-flow: row wrap;
@@ -121,7 +146,7 @@ form {
 
 .layout {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   align-content: flex-start;
   gap: pxAdaptive(12px);
 

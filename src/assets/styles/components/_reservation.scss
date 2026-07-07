@@ -9,6 +9,8 @@
     height: 100dvh;
 
     &__content {
+        @extend %watcherDefault;
+
         display: flex;
         flex-direction: column;
 

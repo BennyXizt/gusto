@@ -41,7 +41,7 @@
 	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
 <% } %>
 <<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
-	<div class="<%=blockClass%>__content">
+	<div class="<%=blockClass%>__content" data-fsc-watcher data-fsc-watcher-once>
 		<% if(typeof reservation_component.title !== 'undefined' && reservation_component.title) { 
 			tag = reservation_component.title.tag
 			label = reservation_component.title.label
@@ -63,27 +63,27 @@
 	</div>
 
 	<form  action="" class="<%=blockClass%>__form <%=formClass%>" autocomplete="on">
-		<div class="<%=formClass%>__field <%=formClass%>__field--50">
+		<div data-fsc-watcher data-fsc-watcher-once class="<%=formClass%>__field <%=formClass%>__field--50">
 			<label for="name">Name</label>
 			<input id='name' name="name" type="text" placeholder="Your Name" autocomplete="name">
 		</div>
-		<div class="<%=formClass%>__field <%=formClass%>__field--50">
+		<div data-fsc-watcher data-fsc-watcher-once class="<%=formClass%>__field <%=formClass%>__field--50">
 			<label for="email">Email</label>
 			<input id='email' name="email" type="email" placeholder="Your E-mail" autocomplete="email">
 		</div>
-		<div class="<%=formClass%>__field">
+		<div data-fsc-watcher data-fsc-watcher-once class="<%=formClass%>__field">
 			<label for="tel">Phone Number</label>
 			<input id='tel' name="tel" type="tel" placeholder="Your Number" autocomplete="tel">
 		</div>
-		<div class="<%=formClass%>__field <%=formClass%>__field--33">
+		<div data-fsc-watcher data-fsc-watcher-once class="<%=formClass%>__field <%=formClass%>__field--33">
 			<label for="people">People</label>
 			<input id='people' name="people" type="number" placeholder="1-10" min="1" max="10" autocomplete="off">
 		</div>
-		<div class="<%=formClass%>__field <%=formClass%>__field--33">
+		<div data-fsc-watcher data-fsc-watcher-once class="<%=formClass%>__field <%=formClass%>__field--33">
 			<label for="date">Date</label>
 			<input id='date' name="date" type="date" autocomplete="off">
 		</div>
-		<div class="<%=formClass%>__field <%=formClass%>__field--33">
+		<div data-fsc-watcher data-fsc-watcher-once class="<%=formClass%>__field <%=formClass%>__field--33">
 			<label for="time">Time</label>
 			<input id='time' name="time" type="time" autocomplete="off">
 		</div>

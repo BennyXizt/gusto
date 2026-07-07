@@ -49,7 +49,7 @@
 <% if(isWrapper) { %>
 	<<%=wrapperThisTag%> <%-wrapperThisDataAttributes%> class='<%=wrapperThisClass%>' <%-wrapperThisID%> <%-wrapperThisStyles%>>
 <% } %>
-<<%=thisTag%> <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
+<<%=thisTag%> data-fsc-watcher data-fsc-watcher-once <%-thisDataAttributes%> class='<%=thisClass%>' <%-thisID%> <%-thisStyles%>>
 	<div class="<%=blockClass%>__field">
 		<h2 class="<%=blockClass%>__title">Address</h2>
 		<div class="<%=blockClass%>__content">

@@ -1,6 +1,7 @@
 @use 'sass:map';
 
 .address {
+    @extend %watcherDefault;
     @extend %card-2;
 
     display: flex;
